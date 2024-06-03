@@ -30,7 +30,7 @@ const Navbars = () => {
     }, [])
 
     return(
-        <Navbar bg="light" expand="md" className='px-5'>
+        <Navbar expand="md" className='px-1 nav'>
             <Navbar.Brand>
                 <Link to="/" className="nav-link">Home</Link>
             </Navbar.Brand>

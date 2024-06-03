@@ -3,7 +3,6 @@ import axios from 'axios'
 
 // components
 import ProductDetails from '../components/ProductDetails'
-import ProductForm from '../components/ProductForm'
 
 const Home = () => {
     
@@ -24,15 +23,15 @@ const Home = () => {
         fetchProducts()
     }, [])
     return(
-        <div className="home">
-            <div className="products">
+        <div>
+            <h1>Featured Items</h1>
+            <div className="d-flex flex-wrap justify-content-between">
                 {/* only if we have a value for 'products', we'll start to map through them */}
                 {products.map((product) => (
                     
                     <ProductDetails key={product.id} product = {product}/>
                 ))}
             </div>
-            <ProductForm />
         </div>
     )
 }
