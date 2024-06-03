@@ -1,14 +1,14 @@
 const Product = require("../models/products")
 const mongoose = require('mongoose')
-
+const axios = require('axios')
 module.exports = {
 
     // get all producsts
     getProducts: async (req, res) => {
-        const products = await Product.find({}).sort({createdAt: -1})
-        res.status(200).json(products) //send it back as json
+        const response = await axios.get('https://dummyjson.com/products')
+        res.status(200).json(response.data.products) //send it back as json
     },
-
+  
     // get a single product
     getProduct: async (req, res) => {
         const { id } = req.params
