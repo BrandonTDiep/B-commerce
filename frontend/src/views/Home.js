@@ -26,11 +26,13 @@ const Home = () => {
         <div>
             <h1>Featured Items</h1>
             <div className="d-flex flex-wrap justify-content-between">
-                {/* only if we have a value for 'products', we'll start to map through them */}
-                {products.map((product) => (
-                    
-                    <ProductDetails key={product.id} product = {product}/>
-                ))}
+                {products.map((product) => {
+                    let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
+
+                    return(
+                        <ProductDetails key={product.id} product = {{...product, discountedPrice}}/>
+                    )
+                })}
             </div>
         </div>
     )

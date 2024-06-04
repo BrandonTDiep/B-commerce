@@ -73,41 +73,20 @@ header a {
   color: #333;
 }
 
-
-/* new product form */
-label, input{
-  display: block;
+.price{
+  text-decoration: line-through
 }
 
-input{
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+.sale{
+  font-weight: 500;
 }
 
-form button {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  font-family: "Poppins";
-  border-radius: 4px;
-  cursor: pointer;
+.product{
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-div.error{
-  padding: 10px;
-  background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
-  border-radius: 4px;
-  margin: 20px 0;
-}
-
-.input error{
-  border: 1px solid var(--error);
+.productImg{
+  width: 238px;
+  height: 238px;
 }
