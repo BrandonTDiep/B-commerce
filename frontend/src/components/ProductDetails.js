@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { formatUSD } from '../utils/helpers';
 const ProductDetails = ({ product }) => {
   return (
-    <Card className='mt-5' style={{ width: '15rem' }}>
+    <Card className='mb-5' style={{ width: '15rem' }}>
       <Card.Img variant="top" className='productImg' src={product.images[0]} />
       <Card.Body>
         <Card.Text className='mb-0 product'>{product.brand}</Card.Text>

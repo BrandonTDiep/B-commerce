@@ -30,9 +30,9 @@ const Navbars = () => {
     }, [])
 
     return(
-        <Navbar expand="md" className='px-1 nav'>
+        <Navbar expand="md" className='nav'>
             <Navbar.Brand>
-                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/" className="nav-link px-0 logo">B-commerce</Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
@@ -41,7 +41,7 @@ const Navbars = () => {
                 </Form>
                 <Nav className="ml-auto">
                     <Link to="/" className="nav-link">Sign In</Link>
-                    <Link to="/" className="nav-link"><FontAwesomeIcon icon={faCartShopping} /></Link>
+                    <Link to="/" className="nav-link px-0"><FontAwesomeIcon icon={faCartShopping} /></Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

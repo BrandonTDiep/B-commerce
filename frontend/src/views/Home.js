@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from 'axios' 
-
+import banner from "../assets/banner.jpg"
 // components
 import ProductDetails from '../components/ProductDetails'
 
@@ -24,16 +24,17 @@ const Home = () => {
     }, [])
     return(
         <div>
-            <h1>Featured Items</h1>
-            <div className="d-flex flex-wrap justify-content-between">
+            <img className="d-flex banner" src={banner} alt="ecommerce banner" />
+            <h3 className="my-5">Featured Items</h3>
+            <ul className="d-flex flex-wrap justify-content-between productItems">
                 {products.map((product) => {
                     let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
 
                     return(
-                        <ProductDetails key={product.id} product = {{...product, discountedPrice}}/>
+                        <li key={product.id}><ProductDetails key={product.id} product = {{...product, discountedPrice}}/></li>
                     )
                 })}
-            </div>
+            </ul>
         </div>
     )
 }
