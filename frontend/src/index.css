@@ -6,13 +6,13 @@
   --error: #e7195a;
 }
 
-body{
+body {
   background: #f1f1f1;
   margin: 0;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
 }
 
-header{
+header {
   background: #fff;
 }
 
@@ -30,48 +30,108 @@ header a {
   text-decoration: none;
 }
 
-.pages, .nav.navbar{
+.pages, .nav.navbar {
   padding: 0 20px;
 }
 
-
-.pages{
+.pages {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.nav.navbar{
+.nav.navbar {
   max-width: 1400px;
   margin: 20px auto;
 }
 
-.banner{
+
+
+.banner {
   width: 100%;
 }
 
-.logo{
+.logo {
   height: 40px;
 }
 
-.price{
-  text-decoration: line-through
+.cut-price {
+  text-decoration: line-through;
 }
 
-.sale{
+.price {
   font-weight: 500;
 }
 
-.product{
+.sale {
+  font-weight: 500;
+}
+
+.product {
   font-size: 0.9rem;
   font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+
 }
 
-.productItems{
+.product-items {
   list-style-type: none;
   padding-left: 0;
+  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+  margin: 0;
+  padding: 0;
 }
 
-.productImg{
+.product-img{
   width: 238px;
   height: 238px;
+}
+
+.groceries{
+  height: 408px;
+}
+
+.groceries-text{
+  background-color: #8D9BA1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #153340;
+  padding: 0 7rem;
+  width: 50%;
+}
+
+.groceries-text p{
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.groceries-image{
+  width: 50%;
+}
+
+.groceries-img{
+  height: 408px;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 790px){
+  .groceries-text{
+    padding: 0 10px;
+  }
+
+  .groceries-text h2{
+    font-weight: 500;
+  }
+
+  .groceries-text p{
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
 }
