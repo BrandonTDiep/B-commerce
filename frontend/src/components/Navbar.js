@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faShop, } from '@fortawesome/free-solid-svg-icons';
 
 
 const Navbars = () => {
@@ -31,8 +31,8 @@ const Navbars = () => {
 
     return(
         <Navbar expand="md" className='nav'>
-            <Navbar.Brand>
-                <Link to="/" className="nav-link px-0 logo">B-commerce</Link>
+            <Navbar.Brand>       
+                <Link to="/" className="nav-link px-0 logo"><FontAwesomeIcon className="pl-1" icon={faShop} /> B-commerce</Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
@@ -40,6 +40,8 @@ const Navbars = () => {
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} />
                 </Form>
                 <Nav className="ml-auto">
+                    <Link to="/categories" className="nav-link">Categories</Link>
+
                     <Link to="/" className="nav-link">Sign In</Link>
                     <Link to="/" className="nav-link px-0"><FontAwesomeIcon icon={faCartShopping} /></Link>
                 </Nav>

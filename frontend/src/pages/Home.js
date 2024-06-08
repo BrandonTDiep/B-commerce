@@ -62,7 +62,7 @@ const Home = () => {
                     <section className="groceries-text">
                         <div>
                             <h2>Groceries</h2>
-                            <p>B-commerce has everything you need for groceries whether it be meat, vegetables, or fruits.</p>
+                            <p>B-commerce has everything you need for groceries whether it be meat, vegetables, fruits, and more.</p>
                         </div>
                     </section>
                     <section className="groceries-image">

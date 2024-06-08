@@ -4,14 +4,11 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { ProductsContextProvider } from './context/ProductContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ProductsContextProvider>
       <App />
-    </ProductsContextProvider>
   </React.StrictMode>
 );
 
