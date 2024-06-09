@@ -7,6 +7,12 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/******************************************
+/* HOME PAGE LAYOUT
+/*******************************************/
+
+/* ========= HEADER ========= */
+
 header {
   background: #fff;
 }
@@ -132,12 +138,27 @@ a.nav-link{
   border: 1px solid gray;
   display: inline-block;  
   text-align: center;
-  margin: 0 5px;
+  margin: 5px 5px;
   padding: 5px 5px;
 }
 
 .categories-list li:first-letter, .category-title:first-letter{
   text-transform: uppercase;
+}
+
+.loading-container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: -webkit-translate(-50%, -50%);
+  transform: -moz-translate(-50%, -50%);
+  transform: -ms-translate(-50%, -50%);
+}
+
+.loading-container img{
+  width: 80px;
+  height: 80px;
 }
 
 @media (max-width: 790px){

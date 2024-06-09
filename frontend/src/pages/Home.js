@@ -3,13 +3,14 @@ import axios from 'axios'
 import mainBanner from "../assets/banner.jpg"
 import furnitureBanner from "../assets/furniture.png"
 import groceries from "../assets/groceries.jpg"
-
+import loadingSpinner from "../assets/loadingSpinner.svg"
 // components
 import ProductDetails from '../components/ProductDetails'
 
 const Home = () => {
     
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
     
     // useEffect will fire a component when rendered, want to only fire once, dependency array empty means fire only once
     useEffect(() => {
@@ -21,10 +22,20 @@ const Home = () => {
             catch(error){
                 console.log(error)
             }
-            
+            finally{
+                setLoading(false)
+            }
         }
         fetchProducts()
     }, [])
+
+    if(loading === true){
+        return(
+            <div className="loading-container">
+                <img src={loadingSpinner} alt="loading.." />
+            </div>
+        );
+    }
     return(
         <div>
             <section>

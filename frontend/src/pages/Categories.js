@@ -41,15 +41,15 @@ const Categories = () => {
         <h1 className="mx-auto category-title">{category}</h1>
         <nav className="categories-nav">
           <ul className="categories-list">
-          <Link to={`/categories/all`}><li>All</li></Link>
+          <li><Link to={`/categories/all`} className="mt-5">All</Link></li>
           {categories.slice(0,7).map((category, index) => (
-              <Link key={index} to={`/categories/${category}`}><li key={index}>{category.replace('-', ' ')}</li></Link>
+              <li key={index}><Link key={index} to={`/categories/${category}`} className="mt-5">{category.replace('-', ' ')}</Link></li>
             ))}
           </ul>
         </nav>
       </header>
       
-      <div>
+      <ul className="product-items">
         {categoryProducts
             .map((product) => {
                 let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
@@ -58,7 +58,7 @@ const Categories = () => {
                     <li key={product.id}><ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/></li>
                 )
             })}
-      </div>
+      </ul>
       
     </div>
   )
