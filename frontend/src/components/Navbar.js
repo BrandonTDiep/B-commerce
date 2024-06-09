@@ -40,7 +40,7 @@ const Navbars = () => {
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} />
                 </Form>
                 <Nav className="ml-auto">
-                    <Link to="/categories" className="nav-link">Categories</Link>
+                    <Link to="/categories/all" className="nav-link">Categories</Link>
 
                     <Link to="/" className="nav-link">Sign In</Link>
                     <Link to="/" className="nav-link px-0"><FontAwesomeIcon icon={faCartShopping} /></Link>

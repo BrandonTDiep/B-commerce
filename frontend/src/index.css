@@ -112,6 +112,34 @@ a.nav-link{
   width: 100%;
 }
 
+.page-size{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.categories-nav{
+  text-align: center;
+}
+
+.categories-list{
+  list-style-type: none;
+    padding-left: 0px;
+
+}
+
+.categories-list li{
+  border: 1px solid gray;
+  display: inline-block;  
+  text-align: center;
+  margin: 0 5px;
+  padding: 5px 5px;
+}
+
+.categories-list li:first-letter, .category-title:first-letter{
+  text-transform: uppercase;
+}
+
 @media (max-width: 790px){
   .groceries-text{
     padding: 0 10px;

@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 //pages & components
 import Home from './pages/Home'
 import Categories from './pages/Categories'
+import Product from './pages/Product'
+
 
 import Navbars from './components/Navbar'
 // BroswerRouter wraps everywhere we want to use the router
@@ -14,7 +16,8 @@ function App() {
         <div className='pages'>
           <Routes>
             <Route path="/" element={<Home />}/>
-            <Route path="/categories" element={<Categories />}/>
+            <Route path="/categories/:category" element={<Categories />}/>
+            <Route path="/categories/product/:id" element={<Product />}/>
           </Routes>
         </div>
       </BrowserRouter>
