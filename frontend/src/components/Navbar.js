@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,9 +10,15 @@ const Navbars = () => {
 
     const [searchBarWidth, setSearchBarWidth] = useState('500px')
     const [searchQuery, setSearchQuery] = useState("")
+    const navigate = useNavigate()
 
-    function handleSearchChange(){
-        setSearchQuery(searchQuery)
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value)
+    }
+
+    const handleSearchSubmit = (event) => {
+        event.preventDefault()
+        navigate(`/search/${searchQuery}`)
     }
 
     useEffect(() => {
@@ -41,12 +47,11 @@ const Navbars = () => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
-                <Form className="mx-auto my-2 my-lg-0 searchbar">
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} onChange={handleSearchChange} />
+                <Form className="mx-auto my-2 my-lg-0 searchbar" onSubmit={handleSearchSubmit}>
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} onChange={handleSearchChange} />
                 </Form>
                 <Nav className="ml-auto">
                     <Link to="/categories/all" className="nav-link">Categories</Link>
-
                     <Link to="/" className="nav-link">Sign In</Link>
                     <Link to="/" className="nav-link px-0"><FontAwesomeIcon icon={faCartShopping} /></Link>
                 </Nav>

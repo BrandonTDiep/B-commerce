@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const productRoutes = require("./routes/products");
 const categoryRoutes = require("./routes/categories");
+const searchRoutes = require("./routes/searches");
 
 const mongoose = require('mongoose');
 const flash = require("express-flash");
@@ -35,6 +36,7 @@ app.use(flash());
 // when we fire request to this route right here I want you to use these routes 
 app.use('/api/products', productRoutes)
 app.use('/api/categories', categoryRoutes)
+app.use('/api/searches', searchRoutes)
 
 
 // 404 handler
