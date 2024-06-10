@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, useParams } from 'react-router-dom'
 import ProductDetails from '../components/ProductDetails'
+import loadingSpinner from "../assets/loadingSpinner.svg"
 
 import axios from 'axios' 
 
@@ -9,6 +10,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([])
   const [categoryProducts, setCategoryProducts] = useState([])
   const { category } = useParams();
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -18,6 +20,9 @@ const Categories = () => {
         }
         catch(error){
             console.log(error)
+        }
+        finally{
+          setLoading(false)
         }
     }
     const fetchCategory = async () => {
@@ -33,7 +38,15 @@ const Categories = () => {
     fetchCategories()
     fetchCategory()
 
-}, [category])
+  }, [category])
+
+  if(loading === true){
+    return(
+        <div className="loading-container">
+            <img src={loadingSpinner} alt="loading.." />
+        </div>
+    );
+  }
 
   return (
     <div>

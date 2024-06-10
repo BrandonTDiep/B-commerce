@@ -84,6 +84,15 @@ a.nav-link{
   padding: 0;
 }
 
+.product-items li div{
+  transition: all .15s ease-in;
+}
+
+.product-items li div:hover{
+  border-color: black;
+  cursor: pointer;
+}
+
 .product-img{
   width: 238px;
   height: 238px;
@@ -135,11 +144,16 @@ a.nav-link{
 }
 
 .categories-list li{
-  border: 1px solid gray;
+  border: 1px solid darkgray;
   display: inline-block;  
   text-align: center;
   margin: 5px 5px;
-  padding: 5px 5px;
+  padding: 5px 10px;
+  transition: all .2s;
+}
+
+.categories-list li:hover{
+  border: 1px solid black;
 }
 
 .categories-list li:first-letter, .category-title:first-letter{
