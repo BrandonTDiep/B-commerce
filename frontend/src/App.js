@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<Home />}/>
             <Route path="/categories/:category" element={<Categories />}/>
             <Route path="/categories/product/:id" element={<Product />}/>
-            <Route path="/search/:query" element={<Search />}/>
+            <Route path="/search/:searchQuery" element={<Search />}/>
           </Routes>
         </div>
       </BrowserRouter>

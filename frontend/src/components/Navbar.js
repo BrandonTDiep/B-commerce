@@ -19,6 +19,7 @@ const Navbars = () => {
     const handleSearchSubmit = (event) => {
         event.preventDefault()
         navigate(`/search/${searchQuery}`)
+        setSearchQuery("")
     }
 
     useEffect(() => {
@@ -47,8 +48,8 @@ const Navbars = () => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
-                <Form className="mx-auto my-2 my-lg-0 searchbar" onSubmit={handleSearchSubmit}>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} onChange={handleSearchChange} />
+                <Form className="mx-auto my-2 my-lg-0 searchbar" onSubmit={handleSearchSubmit} id="searchQuery">
+                    <FormControl type="text" name="searchQuery" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} onChange={handleSearchChange} value={searchQuery} />
                 </Form>
                 <Nav className="ml-auto">
                     <Link to="/categories/all" className="nav-link">Categories</Link>
