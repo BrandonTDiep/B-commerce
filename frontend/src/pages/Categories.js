@@ -68,7 +68,11 @@ const Categories = () => {
                 let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
 
                 return(
-                    <li key={product.id}><ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/></li>
+                  <li key={product.id}>
+                    <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
+                        <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/>
+                    </Link>
+                  </li>
                 )
             })}
       </ul>

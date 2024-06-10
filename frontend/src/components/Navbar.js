@@ -8,12 +8,17 @@ import { faCartShopping, faShop, } from '@fortawesome/free-solid-svg-icons';
 
 const Navbars = () => {
 
-    const [searchBarWidth, setSearchBarWidth] = useState('500px');
+    const [searchBarWidth, setSearchBarWidth] = useState('500px')
+    const [searchQuery, setSearchQuery] = useState("")
+
+    function handleSearchChange(){
+        setSearchQuery(searchQuery)
+    }
 
     useEffect(() => {
         const handleResize = () => {
-            if(window.innerWidth < 610){
-                setSearchBarWidth('100%')
+            if(window.innerWidth < 900){
+                setSearchBarWidth('370px')
             }
             else{
                 setSearchBarWidth('500px')
@@ -37,7 +42,7 @@ const Navbars = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
                 <Form className="mx-auto my-2 my-lg-0 searchbar">
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} />
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} onChange={handleSearchChange} />
                 </Form>
                 <Nav className="ml-auto">
                     <Link to="/categories/all" className="nav-link">Categories</Link>

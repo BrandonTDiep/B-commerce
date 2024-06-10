@@ -1,25 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
+/******************************************
+/* BASE STYLES
+/*******************************************/
 /* layout */
 body {
   background: #f1f1f1;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-}
-
-/******************************************
-/* HOME PAGE LAYOUT
-/*******************************************/
-
-/* ========= HEADER ========= */
-
-header {
-  background: #fff;
-}
-
-header a {
-  color: #333;
-  text-decoration: none;
 }
 
 .pages, .nav.navbar {
@@ -30,6 +18,27 @@ header a {
   max-width: 1400px;
   margin: 0 auto;
 }
+
+.loading-container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: -webkit-translate(-50%, -50%);
+  transform: -moz-translate(-50%, -50%);
+  transform: -ms-translate(-50%, -50%);
+}
+
+.loading-container img{
+  width: 80px;
+  height: 80px;
+}
+
+/******************************************
+/* HOME PAGE LAYOUT
+/*******************************************/
+
+/* ========= NAVBAR ========= */
 
 .nav.navbar {
   max-width: 1400px;
@@ -42,7 +51,6 @@ a.nav-link{
   color: black ; 
 }
 
-
 .banner {
   width: 100%;
 }
@@ -51,6 +59,7 @@ a.nav-link{
   height: 40px;
 }
 
+/* ========= PRODUCT ITEMS ========= */
 .cut-price {
   text-decoration: line-through;
 }
@@ -93,10 +102,16 @@ a.nav-link{
   cursor: pointer;
 }
 
+.product-items li a{
+  text-decoration: none;
+}
+
 .product-img{
   width: 238px;
   height: 238px;
 }
+
+/* ========= GROCERIES BANNER ========= */
 
 .groceries{
   height: 408px;
@@ -127,11 +142,11 @@ a.nav-link{
   width: 100%;
 }
 
-.page-size{
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+
+/******************************************
+/* CATEGORY PAGE LAYOUT
+/*******************************************/
+/* ========= CATEGORY NAV ========= */
 
 .categories-nav{
   text-align: center;
@@ -139,8 +154,7 @@ a.nav-link{
 
 .categories-list{
   list-style-type: none;
-    padding-left: 0px;
-
+  padding-left: 0px;
 }
 
 .categories-list li{
@@ -152,6 +166,11 @@ a.nav-link{
   transition: all .2s;
 }
 
+.categories-list li a{
+  text-decoration: none;
+  color: black;
+}
+
 .categories-list li:hover{
   border: 1px solid black;
 }
@@ -160,20 +179,10 @@ a.nav-link{
   text-transform: uppercase;
 }
 
-.loading-container{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transform: -webkit-translate(-50%, -50%);
-  transform: -moz-translate(-50%, -50%);
-  transform: -ms-translate(-50%, -50%);
-}
 
-.loading-container img{
-  width: 80px;
-  height: 80px;
-}
+/******************************************
+/* MEDIA QUERIES
+/*******************************************/
 
 @media (max-width: 790px){
   .groceries-text{
