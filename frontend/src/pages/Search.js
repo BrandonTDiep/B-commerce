@@ -21,6 +21,13 @@ const Search = () => {
 
   }, [searchQuery])
 
+  if(searchedProducts.length === 0){
+    return(
+      <div>
+        <h1>No Results Found</h1>
+      </div>
+    )
+  }
   return (
     <div>
       <h1>Search Results:</h1>
@@ -28,7 +35,7 @@ const Search = () => {
         {searchedProducts
             .map((product) => {
                 let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
-
+                console.log(searchedProducts)
                 return(
                   <li key={product.id}>
                     <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
