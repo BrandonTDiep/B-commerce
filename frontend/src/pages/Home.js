@@ -70,7 +70,7 @@ const Home = () => {
                         return(
                             <li key={product.id}>
                                 <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
-                                    <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/>
+                                    <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {true}/>
                                 </Link>
                             </li>                        )
                     })}

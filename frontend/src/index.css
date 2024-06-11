@@ -88,7 +88,7 @@ a.nav-link{
   padding-left: 0;
   gap: 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(218px, 1fr));
   margin: 0;
   padding: 0;
 }
