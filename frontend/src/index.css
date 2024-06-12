@@ -111,6 +111,14 @@ a.nav-link{
   height: 218px;
 }
 
+.product-main-img{
+  width: 100%;
+}
+
+.product-mini-img{
+  width: 100%;
+}
+
 /* ========= GROCERIES BANNER ========= */
 
 .groceries{
@@ -147,7 +155,9 @@ a.nav-link{
 /* CATEGORY PAGE LAYOUT
 /*******************************************/
 /* ========= CATEGORY NAV ========= */
-
+header{
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+}
 .categories-nav{
   text-align: center;
 }
@@ -177,6 +187,66 @@ a.nav-link{
 
 .categories-list li:first-letter, .category-title:first-letter{
   text-transform: uppercase;
+}
+
+/******************************************
+/* PRODUCT PAGE LAYOUT
+/*******************************************/
+.quantity-btn{
+  display: flex;
+  width: 7.5rem;
+  justify-content: space-evenly;
+  position: relative;
+  padding: 0;
+}
+
+
+.qty-label {
+  font-size: .75rem;
+  line-height: 1.125rem;
+  top: 0;
+  padding: 0 .25rem;
+  background-color: white;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.quantity-selector-input {
+  width: 33.33%;
+  height: 2.5rem;
+  border-radius: 0;
+  font-weight: 500;
+  border-right: none;
+  border-left: none;
+  padding: 0;
+  opacity: 1;
+  text-align: center;
+  border-top: 1px solid #626369;
+  border-bottom: 1px solid #626369;
+  background-color: white;
+
+}
+
+.quantity-button-minus, .quantity-button-plus {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #626369;
+  padding: 0;
+  cursor: pointer;
+}
+
+.quantity-button-minus {
+  border-radius: .3125rem 0 0 .3125rem;
+}
+
+.quantity-button-plus{
+  border-radius: 0 .3125rem  .3125rem 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 

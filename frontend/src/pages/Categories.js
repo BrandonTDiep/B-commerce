@@ -49,7 +49,7 @@ const Categories = () => {
   }
 
   return (
-    <div>
+    <div className="mt-4">
       <header className="d-flex justify-content-center flex-column">
         <h1 className="mx-auto category-title">{category}</h1>
         <nav className="categories-nav">
