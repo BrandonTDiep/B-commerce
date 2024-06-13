@@ -155,9 +155,10 @@ a.nav-link{
 /* CATEGORY PAGE LAYOUT
 /*******************************************/
 /* ========= CATEGORY NAV ========= */
-header{
+.header-nav{
   box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
 }
+
 .categories-nav{
   text-align: center;
 }
@@ -192,6 +193,14 @@ header{
 /******************************************
 /* PRODUCT PAGE LAYOUT
 /*******************************************/
+
+.main-price{
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  font-weight: 500;
+}
+
 .quantity-btn{
   display: flex;
   width: 7.5rem;
@@ -242,6 +251,17 @@ header{
 .quantity-button-plus{
   border-radius: 0 .3125rem  .3125rem 0;
 }
+
+.btn-danger.btn-lg, .btn-outline-secondary.btn-lg{
+  font-size: 1.15rem; 
+}
+
+.btn-outline-secondary.btn-lg{
+  border-color: black;
+  color: black;
+}
+
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
