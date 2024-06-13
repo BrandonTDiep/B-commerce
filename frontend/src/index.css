@@ -175,6 +175,7 @@ a.nav-link{
 
 .categories-list li{
   border: 1px solid darkgray;
+  border-radius: 3px;
   display: inline-block;  
   text-align: center;
   margin: 5px 5px;
