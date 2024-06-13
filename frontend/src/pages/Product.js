@@ -9,6 +9,8 @@ const Product = () => {
   const { productId } = useParams()
   const [product, setProduct] = useState([])
   const [displayedImg, setDisplayedImg] = useState()
+  const [previousImg, setPreviousImg] = useState()
+  const [selectedImg, setSelectedImg] = useState()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -17,6 +19,7 @@ const Product = () => {
           const response = await axios.get(`/api/products/${productId}`)
           setProduct(response.data)
           setDisplayedImg(response.data.images[0])
+          setPreviousImg(response.data.images[0]) 
       }
       catch(error){
           console.log(error)
@@ -37,11 +40,31 @@ const Product = () => {
     );
   }
 
+
+  const handleMouseClick = (image) => {
+    setSelectedImg(image)
+    setPreviousImg(image)
+  }
+
+  const handleMouseEnter = (image) => {
+    setDisplayedImg(image) // hovered over img
+  }
+
+  const handleMouseLeave = () => {
+    setDisplayedImg(previousImg)
+  }
+
+
   return (
     <div className="row mt-4">
       <div className="col-1 d-flex flex-column">
         {product.images.map((image, index) => (
-          <img key={index} className='product-mini-img' src={image} alt='product' onMouseEnter={()=>setDisplayedImg(image)}/>
+           (image === selectedImg) ? 
+           <img key={index} className='product-mini-img rounded border border-dark' src={image} alt='product' 
+           onClick={()=>handleMouseClick(image)} onMouseEnter={()=>handleMouseEnter(image)} onMouseLeave={handleMouseLeave}/>
+            : 
+            <img key={index} className='product-mini-img' src={image} alt='product' 
+            onClick={()=>handleMouseClick(image)} onMouseEnter={()=>handleMouseEnter(image)} onMouseLeave={handleMouseLeave}/>
         ))}
       </div>
 
