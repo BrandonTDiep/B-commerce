@@ -3,14 +3,25 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faShop, } from '@fortawesome/free-solid-svg-icons';
+import { faShop, } from '@fortawesome/free-solid-svg-icons';
+import OffCanvas from '../components/Cart'
 
-
+const options = [
+  {
+    name: 'Enable both scrolling & backdrop',
+    scroll: true,
+    backdrop: true,
+  },
+];
 const Navbars = () => {
 
     const [searchBarWidth, setSearchBarWidth] = useState('500px')
     const [searchQuery, setSearchQuery] = useState("")
+    const [show, setShow] = useState(false);
     const navigate = useNavigate()
+
+    const handleClose = () => setShow(false);
+    const toggleShow = () => setShow((s) => !s);
 
     const handleSearchChange = (event) => {
         setSearchQuery(event.target.value)
@@ -51,10 +62,10 @@ const Navbars = () => {
                 <Form className="mx-auto my-2 my-lg-0 searchbar" onSubmit={handleSearchSubmit} id="searchQuery">
                     <FormControl type="text" name="searchQuery" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} onChange={handleSearchChange} value={searchQuery} />
                 </Form>
-                <Nav className="ml-auto">
+                <Nav className="ml-auto align-items-center">
                     <Link to="/categories/all" className="nav-link">Categories</Link>
                     <Link to="/" className="nav-link">Sign In</Link>
-                    <Link to="/" className="nav-link px-0"><FontAwesomeIcon icon={faCartShopping} /></Link>
+                    <OffCanvas show={show} placement={'end'} onShow={toggleShow} onClose={handleClose} {...options[0]} />
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

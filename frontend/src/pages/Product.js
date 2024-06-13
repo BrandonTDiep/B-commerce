@@ -12,6 +12,7 @@ const Product = () => {
   const [previousImg, setPreviousImg] = useState()
   const [selectedImg, setSelectedImg] = useState()
   const [loading, setLoading] = useState(true)
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -54,6 +55,14 @@ const Product = () => {
     setDisplayedImg(previousImg)
   }
 
+  const handleIncrease = () => {
+    setQuantity(prevCount => Math.min(prevCount + 1, 6))
+  }
+
+  const handleDecrease = () => {
+    setQuantity(prevCount => Math.max(prevCount - 1, 1))
+  }
+
 
   return (
     <div className="row mt-4">
@@ -77,14 +86,14 @@ const Product = () => {
         <h2>{product.title}</h2>
         <p className="mt-4">{product.description}</p>
 
-        <span className='main-price'>${product.price}</span>
+        <span className='main-price'>${quantity * product.price}</span>
 
         
         <div className="quantity-btn my-5">
-          <button className="quantity-button-minus" aria-label="Decrease Quantity" disabled="">-</button>
-          <input type="number" id="quantity" disabled min="1" max="6" name="quantity" title="Qty" className="quantity-selector-input" value='5' />
+          <button className="quantity-button-minus" onClick={handleDecrease} aria-label="Decrease Quantity" disabled="">-</button>
+          <input type="number" disabled id="quantity" name="quantity" title="Qty" className="quantity-selector-input" value={quantity} min="1" max="6"/>
           <label className="qty-label" htmlFor='quantity'>Qty</label>
-          <button className="quantity-button-plus" aria-label="Increase Quantity">+</button>
+          <button className="quantity-button-plus" onClick={handleIncrease} aria-label="Increase Quantity" >+</button>
         </div>
 
 
