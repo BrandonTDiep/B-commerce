@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShop, } from '@fortawesome/free-solid-svg-icons';
+import { faShop } from '@fortawesome/free-solid-svg-icons';
 import OffCanvas from '../components/Cart'
 
 const options = [
@@ -36,10 +36,10 @@ const Navbars = () => {
     useEffect(() => {
         const handleResize = () => {
             if(window.innerWidth < 900){
-                setSearchBarWidth('370px')
+                setSearchBarWidth('350px')
             }
             else{
-                setSearchBarWidth('500px')
+                setSearchBarWidth('470px')
             }
         }
         
@@ -62,10 +62,13 @@ const Navbars = () => {
                 <Form className="mx-auto my-2 my-lg-0 searchbar" onSubmit={handleSearchSubmit} id="searchQuery">
                     <FormControl type="text" name="searchQuery" placeholder="Search" className="mr-sm-2" style={{ width: searchBarWidth }} onChange={handleSearchChange} value={searchQuery} />
                 </Form>
-                <Nav className="ml-auto align-items-center">
+                <Nav className="ml-auto">
                     <Link to="/categories/all" className="nav-link">Categories</Link>
                     <Link to="/" className="nav-link">Sign In</Link>
-                    <OffCanvas show={show} placement={'end'} onShow={toggleShow} onClose={handleClose} {...options[0]} />
+                    <i className="nav-link bi bi-cart3" onClick={toggleShow}>
+                        <span className='bag-quantity'>1</span>
+                    </i>   
+                    <OffCanvas show={show} placement={'end'} onClose={handleClose} {...options[0]} />
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

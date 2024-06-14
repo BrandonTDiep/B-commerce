@@ -98,7 +98,7 @@ const Product = () => {
 
 
         <div className="d-grid gap-3">
-          <Button variant="danger"  size="lg">Add To Cart</Button>
+          <Button variant="danger" size="lg">Add To Cart</Button>
           <Button variant="outline-secondary" size="lg">Buy Now</Button>{' '}
         </div>
 

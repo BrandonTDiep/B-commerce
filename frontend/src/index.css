@@ -47,6 +47,10 @@ body {
   padding: 20px 20px;
 }
 
+.navbar-nav{
+  align-items: center;
+}
+
 a.nav-link{
   color: black ; 
 }
@@ -59,7 +63,7 @@ a.nav-link{
   height: 40px;
 }
 
-.bi.bi-bag{
+.bi.bi-cart3{
   font-size: 1.6rem;
 }
 
@@ -71,7 +75,7 @@ a.nav-link{
   right: 1.19rem;
   font-family: poppins, sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.75rem;
   line-height: 1.1rem;
   text-transform: uppercase;
@@ -315,5 +319,15 @@ input::-webkit-inner-spin-button {
   .groceries-text p{
     font-weight: 500;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 767px){
+  .navbar-nav{
+    align-items: normal;
+  }
+  .bag-quantity{
+    position: static; 
+    transform: translate(-10%, -106%);
   }
 }
