@@ -4,10 +4,8 @@ import Home from './pages/Home'
 import Categories from './pages/Categories'
 import Product from './pages/Product'
 import Search from './pages/Search'
-
-
-
 import Navbars from './components/Navbar'
+
 // BroswerRouter wraps everywhere we want to use the router
 // routes compoenents wraps all of individual routes and then the individual route component to create a single route and all of that comes from react router dom
 function App() {

@@ -5,6 +5,7 @@ import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShop } from '@fortawesome/free-solid-svg-icons';
 import OffCanvas from '../components/Cart'
+import { useCart } from '../context/CartContext'
 
 const options = [
   {
@@ -19,7 +20,7 @@ const Navbars = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const [show, setShow] = useState(false);
     const navigate = useNavigate()
-
+    const { cartQuantity } = useCart()
     const handleClose = () => setShow(false);
     const toggleShow = () => setShow((s) => !s);
 
@@ -66,7 +67,7 @@ const Navbars = () => {
                     <Link to="/categories/all" className="nav-link">Categories</Link>
                     <Link to="/" className="nav-link">Sign In</Link>
                     <i className="nav-link bi bi-cart3" onClick={toggleShow}>
-                        <span className='bag-quantity'>1</span>
+                        {cartQuantity > 0 && <span className='bag-quantity'>{cartQuantity}</span>}
                     </i>   
                     <OffCanvas show={show} placement={'end'} onClose={handleClose} {...options[0]} />
                 </Nav>

@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import loadingSpinner from "../assets/loadingSpinner.svg"
 import Button from 'react-bootstrap/Button';
+import { formatUSD } from '../utils/helpers';
+import { useCart } from '../context/CartContext'
 
 const Product = () => {
 
@@ -13,6 +15,7 @@ const Product = () => {
   const [selectedImg, setSelectedImg] = useState()
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
+  const { addToCart } = useCart() // get the addToCart function from context
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -63,6 +66,10 @@ const Product = () => {
     setQuantity(prevCount => Math.max(prevCount - 1, 1))
   }
 
+  const handleAddToCart = () => {
+    addToCart(quantity)
+  }
+
 
   return (
     <div className="row mt-4">
@@ -86,7 +93,7 @@ const Product = () => {
         <h2>{product.title}</h2>
         <p className="mt-4">{product.description}</p>
 
-        <span className='main-price'>${quantity * product.price}</span>
+        <span className='main-price'>{formatUSD(quantity * product.price)}</span>
 
         
         <div className="quantity-btn my-5">
@@ -98,7 +105,7 @@ const Product = () => {
 
 
         <div className="d-grid gap-3">
-          <Button variant="danger" size="lg">Add To Cart</Button>
+          <Button variant="danger" size="lg" onClick={handleAddToCart}>Add To Cart</Button>
           <Button variant="outline-secondary" size="lg">Buy Now</Button>{' '}
         </div>
 
