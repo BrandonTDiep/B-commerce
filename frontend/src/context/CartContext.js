@@ -8,21 +8,38 @@ export const CartContext = createContext()
 // create a custom hook for consuming the context
 export const useCart = () => useContext(CartContext)
 
+// create a provider component
 export const CartProvider = ({ children }) => {
 
-    const [cartQuantity, setCartQuantity] = useState(0) 
+    const [cartItems, setCartItems] = useState([]) 
 
-    const addToCart = (quantity) => {
-        setCartQuantity(prevQuantity => prevQuantity + quantity)
+    const addToCart = (product, quantity) => {
+        setCartItems(
+            prevItems => {
+                const existingItem = prevItems.find(item => item.product.id === product.id)
+                if(existingItem){ // if exists, update quantity of product
+                    return prevItems.map(item => 
+                        item.product.id === product.id ? {...item, quantity: item.quantity + quantity } : item
+                    )
+                }
+                else{ // if not, create new array with existing items and add new product with its quantity
+                    return [...prevItems, {product, quantity}]
+                }
+            }
+
+        )
     }
 
     const removeFromCart = (quantity) => {
-        setCartQuantity(prevQuantity => prevQuantity - quantity)
+        setCartItems(prevQuantity => prevQuantity - quantity)
     }
+
+    // total=0: accumulator, item: current item in 'cartItems' array
+    const cartQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
 
     
     return( 
-        <CartContext.Provider value={{cartQuantity, addToCart, removeFromCart}}>
+        <CartContext.Provider value={{cartItems, cartQuantity, addToCart, removeFromCart}}>
             { children } 
         </CartContext.Provider>
     )   

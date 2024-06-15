@@ -21,6 +21,7 @@ const Navbars = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate()
     const { cartQuantity } = useCart()
+
     const handleClose = () => setShow(false);
     const toggleShow = () => setShow((s) => !s);
 

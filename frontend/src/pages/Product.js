@@ -67,7 +67,7 @@ const Product = () => {
   }
 
   const handleAddToCart = () => {
-    addToCart(quantity)
+    addToCart(product, quantity)
   }
 
 

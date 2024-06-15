@@ -1,12 +1,16 @@
 import React from 'react'
 import { Offcanvas } from 'react-bootstrap';
+import { useCart } from '../context/CartContext'
 
 const OffCanvas = ({ show, onClose, ...props }) => {
+
+  const { cartItems, cartQuantity } = useCart()
+
   return (
     <>
       <Offcanvas show={show} onHide={onClose} {...props}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Your Shopping Cart (0)</Offcanvas.Title>
+          <Offcanvas.Title>Your Shopping Cart ({cartQuantity})</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           Some text as placeholder. In real life you can have the elements you
