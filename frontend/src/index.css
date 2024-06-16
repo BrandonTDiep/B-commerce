@@ -266,7 +266,6 @@ a.nav-link{
   border-top: 1px solid #626369;
   border-bottom: 1px solid #626369;
   background-color: white;
-
 }
 
 .quantity-button-minus, .quantity-button-plus {
@@ -277,19 +276,41 @@ a.nav-link{
   cursor: pointer;
 }
 
-.quantity-button-minus-style2, .quantity-button-plus-style2 {
-  width: 2.5rem;
-  height: 2.5rem;
+.quantity-btn-small{
+  display: flex;
+  width: 7.5rem;
+  position: relative;
+  padding: 0;
+}
+
+.quantity-selector-input-small {
+  width: 22.33%;
+  height: 1.5rem;
+  border-radius: 0;
+  font-weight: 500;
+  border-right: none;
+  border-left: none;
+  padding: 0;
+  opacity: 1;
+  text-align: center;
+  border-top: 1px solid #626369;
+  border-bottom: 1px solid #626369;
+  background-color: white;
+}
+
+.quantity-button-minus-small, .quantity-button-plus-small {
+  width: 1.5rem;
+  height: 1.5rem;
   border: 1px solid #626369;
   padding: 0;
   cursor: pointer;
 }
 
-.quantity-button-minus {
+.quantity-button-minus, .quantity-button-minus-small {
   border-radius: .3125rem 0 0 .3125rem;
 }
 
-.quantity-button-plus{
+.quantity-button-plus, .quantity-button-plus-small{
   border-radius: 0 .3125rem  .3125rem 0;
 }
 
@@ -325,6 +346,10 @@ input::-webkit-inner-spin-button {
 
 .cart-product-img{
   width: 40%;
+}
+
+.cart-items{
+  padding-left: 0;
 }
 
 /******************************************

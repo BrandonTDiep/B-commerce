@@ -96,7 +96,7 @@ const Product = () => {
 
         <span className='main-price'>{formatUSD(quantity * product.price)}</span>
 
-        <QuantityUpdater productId={product.id} quantity={quantity} handleIncrease={handleIncrease} handleDecrease={handleDecrease} />
+        <QuantityUpdater productId={product.id} quantity={quantity} handleIncrease={handleIncrease} handleDecrease={handleDecrease} size = {'big'}/>
 
         <div className="d-grid gap-3">
           <Button variant="danger" size="lg" onClick={handleAddToCart}>Add To Cart</Button>
