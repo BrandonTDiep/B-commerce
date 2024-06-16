@@ -1,10 +1,19 @@
-import React from 'react'
 import { Offcanvas } from 'react-bootstrap';
 import { useCart } from '../context/CartContext'
+import QuantityUpdater from "../components/QuantityUpdater";
 
 const OffCanvas = ({ show, onClose, ...props }) => {
 
-  const { cartItems, cartQuantity } = useCart()
+  const { cartItems, cartQuantity, addToCart, removeFromCart } = useCart()
+
+  const handleIncrease = (product) => {
+    addToCart(product, 1)
+  }
+
+  const handleDecrease = (product) => {
+    removeFromCart(product, 1)
+  } 
+ 
 
   return (
     <>
@@ -17,16 +26,17 @@ const OffCanvas = ({ show, onClose, ...props }) => {
           <p>Your cart is empty!</p> 
           :
           <ul>
-            {cartItems.map((item) => (
-              <li key={item.product.id} className='cart-product d-flex'>
+            {cartItems.map((item) => {
+              console.log(item)
+              return( <li key={item.product.id} className='cart-product d-flex'>
                 <img className='cart-product-img' src={item.product.images[0]} alt={item.product.title} />
                 <div className='d-flex flex-column justify-content-evenly flex-grow-1 px-2'>
                   <span className='cart-product-title'>{item.product.title}</span>
                   <span className='cart-product-price'>{item.product.price}</span>
-                  <span>{item.quantity}</span>
+                  <QuantityUpdater quantity = {item.quantity} handleIncrease = {() => handleIncrease(item.product)} handleDecrease = {() => handleDecrease(item.product)} />
                 </div>       
-              </li>
-            ))}
+              </li>)
+})}
           </ul> 
           }
         </Offcanvas.Body>

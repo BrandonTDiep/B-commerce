@@ -30,9 +30,16 @@ export const CartProvider = ({ children }) => {
         )
     }
 
-    const removeFromCart = (quantity) => {
-        setCartItems(prevQuantity => prevQuantity - quantity)
+    const removeFromCart = (product, quantity) => {
+        setCartItems(
+            prevItems => {
+                return prevItems.map(item => 
+                    item.product.id === product.id ? {...item, quantity: item.quantity - quantity } : item
+                )
+            }
+        )
     }
+
 
     // total=0: accumulator, item: current item in 'cartItems' array
     const cartQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)

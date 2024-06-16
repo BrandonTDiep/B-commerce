@@ -5,6 +5,7 @@ import loadingSpinner from "../assets/loadingSpinner.svg"
 import Button from 'react-bootstrap/Button';
 import { formatUSD } from '../utils/helpers';
 import { useCart } from '../context/CartContext'
+import QuantityUpdater from "../components/QuantityUpdater";
 
 const Product = () => {
 
@@ -59,12 +60,12 @@ const Product = () => {
   }
 
   const handleIncrease = () => {
-    setQuantity(prevCount => Math.min(prevCount + 1, 6))
+    setQuantity(prevCount => prevCount + 1)
   }
 
   const handleDecrease = () => {
-    setQuantity(prevCount => Math.max(prevCount - 1, 1))
-  }
+    setQuantity(prevCount => prevCount - 1)
+  } 
 
   const handleAddToCart = () => {
     addToCart(product, quantity)
@@ -95,14 +96,7 @@ const Product = () => {
 
         <span className='main-price'>{formatUSD(quantity * product.price)}</span>
 
-        
-        <div className="quantity-btn my-5">
-          <button className="quantity-button-minus" onClick={handleDecrease} aria-label="Decrease Quantity" disabled="">-</button>
-          <input type="number" disabled id="quantity" name="quantity" title="Qty" className="quantity-selector-input" value={quantity} min="1" max="6"/>
-          <label className="qty-label" htmlFor='quantity'>Qty</label>
-          <button className="quantity-button-plus" onClick={handleIncrease} aria-label="Increase Quantity" >+</button>
-        </div>
-
+        <QuantityUpdater quantity = {quantity} handleIncrease = {handleIncrease} handleDecrease = {handleDecrease} />
 
         <div className="d-grid gap-3">
           <Button variant="danger" size="lg" onClick={handleAddToCart}>Add To Cart</Button>
