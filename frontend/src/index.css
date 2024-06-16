@@ -304,6 +304,22 @@ input::-webkit-inner-spin-button {
 
 
 /******************************************
+/* CART/OFFCANVAS COMPONENT
+/*******************************************/
+.cart-product{
+  list-style-type: none;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.cart-product-title, .cart-product-price{
+  font-weight: 500;
+}
+
+.cart-product-img{
+  width: 40%;
+}
+
+/******************************************
 /* MEDIA QUERIES
 /*******************************************/
 

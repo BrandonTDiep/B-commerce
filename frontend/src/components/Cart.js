@@ -13,8 +13,22 @@ const OffCanvas = ({ show, onClose, ...props }) => {
           <Offcanvas.Title>Your Shopping Cart ({cartQuantity})</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          {cartItems.length === 0 ? 
+          <p>Your cart is empty!</p> 
+          :
+          <ul>
+            {cartItems.map((item) => (
+              <li key={item.product.id} className='cart-product d-flex'>
+                <img className='cart-product-img' src={item.product.images[0]} alt={item.product.title} />
+                <div className='d-flex flex-column justify-content-evenly flex-grow-1 px-2'>
+                  <span className='cart-product-title'>{item.product.title}</span>
+                  <span className='cart-product-price'>{item.product.price}</span>
+                  <span>{item.quantity}</span>
+                </div>       
+              </li>
+            ))}
+          </ul> 
+          }
         </Offcanvas.Body>
       </Offcanvas>
     </>  
