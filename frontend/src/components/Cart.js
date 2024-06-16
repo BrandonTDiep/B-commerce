@@ -26,17 +26,16 @@ const OffCanvas = ({ show, onClose, ...props }) => {
           <p>Your cart is empty!</p> 
           :
           <ul>
-            {cartItems.map((item) => {
-              console.log(item)
-              return( <li key={item.product.id} className='cart-product d-flex'>
+            {cartItems.map((item) => (
+              <li key={item.product.id} className='cart-product d-flex'>
                 <img className='cart-product-img' src={item.product.images[0]} alt={item.product.title} />
                 <div className='d-flex flex-column justify-content-evenly flex-grow-1 px-2'>
                   <span className='cart-product-title'>{item.product.title}</span>
                   <span className='cart-product-price'>{item.product.price}</span>
                   <QuantityUpdater quantity = {item.quantity} handleIncrease = {() => handleIncrease(item.product)} handleDecrease = {() => handleDecrease(item.product)} />
                 </div>       
-              </li>)
-})}
+              </li>
+            ))}
           </ul> 
           }
         </Offcanvas.Body>
