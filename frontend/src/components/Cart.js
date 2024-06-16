@@ -32,7 +32,12 @@ const OffCanvas = ({ show, onClose, ...props }) => {
                 <div className='d-flex flex-column justify-content-evenly flex-grow-1 px-2'>
                   <span className='cart-product-title'>{item.product.title}</span>
                   <span className='cart-product-price'>{item.product.price}</span>
-                  <QuantityUpdater quantity = {item.quantity} handleIncrease = {() => handleIncrease(item.product)} handleDecrease = {() => handleDecrease(item.product)} />
+                  <QuantityUpdater 
+                    productId={item.product.id}
+                    quantity={item.quantity} 
+                    handleIncrease={() => handleIncrease(item.product)} 
+                    handleDecrease={() => handleDecrease(item.product)} 
+                  />
                 </div>       
               </li>
             ))}

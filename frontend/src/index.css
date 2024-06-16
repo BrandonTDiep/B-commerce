@@ -277,6 +277,14 @@ a.nav-link{
   cursor: pointer;
 }
 
+.quantity-button-minus-style2, .quantity-button-plus-style2 {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #626369;
+  padding: 0;
+  cursor: pointer;
+}
+
 .quantity-button-minus {
   border-radius: .3125rem 0 0 .3125rem;
 }
