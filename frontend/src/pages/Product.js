@@ -69,7 +69,7 @@ const Product = () => {
 
   const handleAddToCart = () => {
     const existingCartItem = cartItems.find((item) => item.product.id === product.id)
-    if(existingCartItem && (existingCartItem.quantity + quantity >= 6)){
+    if(existingCartItem && (existingCartItem.quantity + quantity > 6)){
       return
     }
     else{
