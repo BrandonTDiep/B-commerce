@@ -16,7 +16,7 @@ const Product = () => {
   const [selectedImg, setSelectedImg] = useState()
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
-  const { addToCart } = useCart() // get the addToCart function from context
+  const { cartItems, addToCart } = useCart() // get the addToCart function from context
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -68,7 +68,13 @@ const Product = () => {
   } 
 
   const handleAddToCart = () => {
-    addToCart(product, quantity)
+    const existingCartItem = cartItems.find((item) => item.product.id === product.id)
+    if(existingCartItem && (existingCartItem.quantity + quantity >= 6)){
+      return
+    }
+    else{
+      addToCart(product, quantity)
+    }
   }
 
 
