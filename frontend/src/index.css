@@ -334,6 +334,13 @@ a.nav-link{
   display: none;
 }
 
+aside.product-mini-images-container{
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: 8.33333333%;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -453,8 +460,8 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 700px){
 
-  .product-mini-images-container{
-    display: none !important;
+  aside.product-mini-images-container{
+    display: none;
   }
 
   .product-name{
