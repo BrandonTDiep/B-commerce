@@ -344,6 +344,12 @@ input::-webkit-inner-spin-button {
   font-weight: 500;
 }
 
+.btn-close.cart{
+  font-size: 0.7rem;
+  align-items: center;
+  padding-top: 8px;
+}
+
 .cart-product-img{
   width: 40%;
 }

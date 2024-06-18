@@ -6,7 +6,7 @@ import QuantityUpdater from "../components/QuantityUpdater";
 
 const OffCanvas = ({ show, onClose, ...props }) => {
 
-  const { cartItems, cartQuantity, addToCart, removeFromCart, cartTotalPrice } = useCart()
+  const { cartItems, cartQuantity, addToCart, removeFromCart, deleteFromCart, cartTotalPrice } = useCart()
 
   const handleIncrease = (product) => {
     addToCart(product, 1)
@@ -15,6 +15,10 @@ const OffCanvas = ({ show, onClose, ...props }) => {
   const handleDecrease = (product) => {
     removeFromCart(product, 1)
   } 
+
+  const handleDelete = (product) => {
+    deleteFromCart(product)
+  }
  
 
   return (
@@ -32,7 +36,9 @@ const OffCanvas = ({ show, onClose, ...props }) => {
               <li key={item.product.id} className='cart-product d-flex py-2'>
                 <img className='cart-product-img' src={item.product.images[0]} alt={item.product.title} />
                 <div className='d-flex flex-column justify-content-evenly flex-grow-1 px-2'>
-                  <span className='cart-product-title'>{item.product.title}</span>
+                  <span className='cart-product-title d-flex justify-content-between'>{item.product.title}
+                    <button type="button" className="btn-close cart" aria-label="Close" onClick={() => handleDelete(item.product)} ></button>
+                  </span>
                   <span className='cart-product-price'>{formatUSD(item.quantity * item.product.price)}</span>
                   <QuantityUpdater 
                     productId={item.product.id}
