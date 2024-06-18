@@ -34,10 +34,6 @@ body {
   height: 80px;
 }
 
-/******************************************
-/* HOME PAGE LAYOUT
-/*******************************************/
-
 /* ========= NAVBAR ========= */
 
 .nav.navbar {
@@ -86,6 +82,11 @@ a.nav-link{
   position: absolute;
   transform: translateX(20%);
 }
+
+/******************************************
+/* HOME PAGE LAYOUT
+/*******************************************/
+
 /* ========= PRODUCT ITEMS ========= */
 .cut-price {
   text-decoration: line-through;
@@ -122,6 +123,7 @@ a.nav-link{
 
 .product-items li div{
   transition: all .15s ease-in;
+  width: 15rem;
 }
 
 .product-items li div:hover{
@@ -367,6 +369,9 @@ input::-webkit-inner-spin-button {
   background-color: #F5F4F2;
 }
 
+.banner{
+  background-color: black;
+}
 /******************************************
 /* MEDIA QUERIES
 /*******************************************/
@@ -395,3 +400,41 @@ input::-webkit-inner-spin-button {
     transform: translate(-10%, -106%);
   }
 }
+
+@media (max-width: 550px){
+  .product-items li div{
+    width: 12.5rem;
+  }
+
+  .product-items {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(171px, 1fr));
+  }
+}
+
+@media (max-width: 430px){
+  .product-items li div{
+    width: 11.5rem;
+  }
+
+  .product-items {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(171px, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .product-items li div {
+      width: 10.5rem;
+  }
+  .product-items {
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  }
+}
+
+@media (max-width: 375px) {
+  .product-items {
+    grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+  }
+}
+

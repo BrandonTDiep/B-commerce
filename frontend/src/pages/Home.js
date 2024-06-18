@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios' 
 import mainBanner from "../assets/banner.jpg"
 import furnitureBanner from "../assets/furniture.png"
-import groceries from "../assets/groceries.jpg"
+import groceries from "../assets/groceries.png"
 import loadingSpinner from "../assets/loadingSpinner.svg"
 // components
 import ProductDetails from '../components/ProductDetails'
@@ -78,17 +78,7 @@ const Home = () => {
             </section>
 
             <section>
-                <section className="d-flex groceries">
-                    <section className="groceries-text">
-                        <div>
-                            <h2>Groceries</h2>
-                            <p>B-commerce has everything you need for groceries whether it be meat, vegetables, fruits, and more.</p>
-                        </div>
-                    </section>
-                    <section className="groceries-image">
-                        <img className="groceries-img" src={groceries} alt="groceries" />
-                    </section>
-                </section>
+                <img className="d-flex banner" src={groceries} alt="groceries banner" />
                 <h3 className="mt-5 mb-4">Groceries</h3>
                 <ul className="product-items">
                     {products.filter((product) => product.category==='groceries')
