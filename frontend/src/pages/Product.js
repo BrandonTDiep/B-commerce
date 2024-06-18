@@ -80,7 +80,7 @@ const Product = () => {
 
   return (
     <div className="row mt-4">
-      <aside className="product-mini-images-container col-1 d-flex flex-column">
+      <aside className="product-mini-images-container">
         {product.images.map((image, index) => (
            (image === selectedImg) ? 
            <img key={index} className='product-mini-img rounded border border-dark' src={image} alt='product' 
