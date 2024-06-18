@@ -80,7 +80,7 @@ const Product = () => {
 
   return (
     <div className="row mt-4">
-      <div className="col-1 d-flex flex-column">
+      <aside className="product-mini-images-container col-1 d-flex flex-column">
         {product.images.map((image, index) => (
            (image === selectedImg) ? 
            <img key={index} className='product-mini-img rounded border border-dark' src={image} alt='product' 
@@ -89,22 +89,38 @@ const Product = () => {
             <img key={index} className='product-mini-img' src={image} alt='product' 
             onClick={()=>handleMouseClick(image)} onMouseEnter={()=>handleMouseEnter(image)} onMouseLeave={handleMouseLeave}/>
         ))}
-      </div>
+      </aside>
+
+      <h2 className="mobile-product-name">{product.title}</h2>
 
       <div className="col">
         <img className='product-main-img' src={displayedImg} alt='product'/>
       </div>
 
+      <aside className="mobile-view-mini-products mb-5">
+        {product.images.map((image, index) => (
+           (image === selectedImg) ? 
+           <img key={index} className='product-mini-img rounded border border-dark' src={image} alt='product' 
+           onClick={()=>handleMouseClick(image)} onMouseEnter={()=>handleMouseEnter(image)} onMouseLeave={handleMouseLeave}/>
+            : 
+            <img key={index} className='product-mini-img' src={image} alt='product' 
+            onClick={()=>handleMouseClick(image)} onMouseEnter={()=>handleMouseEnter(image)} onMouseLeave={handleMouseLeave}/>
+        ))}
+      </aside>
+
       <div className="col">
-        <h5>{product.brand}</h5>
-        <h2>{product.title}</h2>
+        <div className="product-name">
+          <h5>{product.brand}</h5>
+          <h2>{product.title}</h2>
+        </div>
+
         <p className="mt-4">{product.description}</p>
 
         <span className='main-price'>{formatUSD(quantity * product.price)}</span>
 
         <QuantityUpdater productId={product.id} quantity={quantity} handleIncrease={handleIncrease} handleDecrease={handleDecrease} size = {'big'}/>
 
-        <div className="d-grid gap-3">
+        <div className="d-grid gap-3 mb-5">
           <Button variant="danger" size="lg" onClick={handleAddToCart}>Add To Cart</Button>
           <Button variant="outline-secondary" size="lg">Buy Now</Button>{' '}
         </div>
