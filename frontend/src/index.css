@@ -352,6 +352,15 @@ input::-webkit-inner-spin-button {
   padding-left: 0;
 }
 
+.cart-total-price{
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.offcanvas-footer, .offcanvas-header{
+  background-color: #F5F4F2;
+}
+
 /******************************************
 /* MEDIA QUERIES
 /*******************************************/

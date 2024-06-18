@@ -44,9 +44,9 @@ export const CartProvider = ({ children }) => {
     // total=0: accumulator, item: current item in 'cartItems' array
     const cartQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
 
-    
+    const cartTotalPrice = cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0)
     return( 
-        <CartContext.Provider value={{cartItems, cartQuantity, addToCart, removeFromCart}}>
+        <CartContext.Provider value={{cartItems, cartQuantity, cartTotalPrice, addToCart, removeFromCart}}>
             { children } 
         </CartContext.Provider>
     )   

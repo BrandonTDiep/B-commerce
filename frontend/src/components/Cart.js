@@ -6,7 +6,7 @@ import QuantityUpdater from "../components/QuantityUpdater";
 
 const OffCanvas = ({ show, onClose, ...props }) => {
 
-  const { cartItems, cartQuantity, addToCart, removeFromCart } = useCart()
+  const { cartItems, cartQuantity, addToCart, removeFromCart, cartTotalPrice } = useCart()
 
   const handleIncrease = (product) => {
     addToCart(product, 1)
@@ -45,8 +45,12 @@ const OffCanvas = ({ show, onClose, ...props }) => {
               </li>
             ))}
           </ul> 
-          }
+          }       
         </Offcanvas.Body>
+        <div className='px-3 py-3 offcanvas-footer d-flex justify-content-between'>
+          <h5>Subtotal</h5>
+          <span className='cart-total-price'>{formatUSD(cartTotalPrice)}</span>
+        </div>
       </Offcanvas>
     </>  
   )
