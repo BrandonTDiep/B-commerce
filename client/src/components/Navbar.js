@@ -4,7 +4,7 @@ import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShop } from '@fortawesome/free-solid-svg-icons';
-import OffCanvas from '../components/Cart'
+import OffCanvas from '../components/Offcanvas'
 import { useCart } from '../context/CartContext'
 
 const options = [

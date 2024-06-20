@@ -2,7 +2,7 @@ import { Offcanvas } from 'react-bootstrap';
 import { useCart } from '../context/CartContext'
 import { formatUSD } from '../utils/helpers';
 
-import QuantityUpdater from "../components/QuantityUpdater";
+import QuantityUpdater from "./QuantityUpdater";
 
 const OffCanvas = ({ show, onClose, ...props }) => {
 

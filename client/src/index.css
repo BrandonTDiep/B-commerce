@@ -459,7 +459,6 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 700px){
-
   aside.product-mini-images-container{
     display: none;
   }
@@ -471,7 +470,6 @@ input::-webkit-inner-spin-button {
   .mobile-product-name{
     display: flex;
     justify-content: center;
-
   }
 
   .mobile-view-mini-products {

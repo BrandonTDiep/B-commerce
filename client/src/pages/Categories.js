@@ -51,7 +51,7 @@ const Categories = () => {
   return (
     <div className="mt-4">
       <header className="d-flex justify-content-center flex-column">
-        <h1 className="mx-auto category-title">{category}</h1>
+        <h1 className="mx-auto category-title">{category.replace('-', ' ')}</h1>
         <nav className="categories-nav">
           <ul className="categories-list">
           <li><Link to={`/categories/all`} className="mt-5">All</Link></li>
