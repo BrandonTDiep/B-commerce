@@ -67,7 +67,7 @@ const Navbars = () => {
                 <Nav className="ml-auto">
                     <Link to="/categories/all" className="nav-link">Categories</Link>
                     <Link to="/" className="nav-link">Sign In</Link>
-                    <i className="nav-link bi bi-cart3" onClick={toggleShow}>
+                    <i className="nav-link bi bi-cart3" onClick={toggleShow} aria-label="Cart">
                         {cartQuantity > 0 && <span className='bag-quantity'>{cartQuantity}</span>}
                     </i>   
                     <OffCanvas show={show} placement={'end'} onClose={handleClose} {...options[0]} />

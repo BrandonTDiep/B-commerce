@@ -386,6 +386,16 @@ input::-webkit-inner-spin-button {
 .banner{
   background-color: black;
 }
+
+button.cart-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.offcanvas-subtotal{
+  border-bottom: 1px solid #e0ded7;
+}
 /******************************************
 /* MEDIA QUERIES
 /*******************************************/
