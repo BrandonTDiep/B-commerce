@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Categories from './pages/Categories'
 import Product from './pages/Product'
 import Search from './pages/Search'
+import Cart from './pages/Cart'
 import Navbars from './components/Navbar'
 
 // BroswerRouter wraps everywhere we want to use the router
@@ -19,6 +20,7 @@ function App() {
             <Route path="/categories/:category" element={<Categories />}/>
             <Route path="/categories/product/:productId" element={<Product />}/>
             <Route path="/search/:searchQuery" element={<Search />}/>
+            <Route path="/cart" element={<Cart />}/>
           </Routes>
         </div>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import { Offcanvas, Button } from 'react-bootstrap';
 import { useCart } from '../context/CartContext'
+import { Link } from 'react-router-dom'
 import { formatUSD } from '../utils/helpers';
 
 import QuantityUpdater from "./QuantityUpdater";
@@ -59,11 +60,9 @@ const OffCanvas = ({ show, onClose, ...props }) => {
             <span className='cart-total-price'>{formatUSD(cartTotalPrice)}</span>
           </div>
           
-          <div className='d-grid mx-3 mt-5 mb-3'>
-            <Button variant="danger" size="lg">
-              View Cart
-            </Button>
-          </div>
+          <Link to='/cart' className='cart-link d-grid mx-3 mt-5 mb-3 '>
+            <Button variant="danger" size="lg">View Cart</Button>
+          </Link>
         </div>
         
        
