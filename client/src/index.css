@@ -349,6 +349,23 @@ input::-webkit-inner-spin-button {
 
 
 /******************************************
+/* CART PAGE LAYOUT
+/*******************************************/
+
+.cart-options{
+  text-align: center;
+}
+
+.cart-product-img-small{
+  width: 20%;
+}
+
+.cart-in, .cart-save{
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+
+/******************************************
 /* CART/OFFCANVAS COMPONENT
 /*******************************************/
 .cart-product{
