@@ -364,6 +364,20 @@ input::-webkit-inner-spin-button {
   border-bottom: 1px solid rgb(204, 204, 204);
 }
 
+.checkout-total{
+  border-top: 1px solid rgb(204, 204, 204);
+}
+
+.order-summary{
+  font-weight: 500;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.paypal-btn{
+  height: 70%;
+}
+
 
 /******************************************
 /* CART/OFFCANVAS COMPONENT
@@ -411,10 +425,10 @@ button.cart-button{
 }
 
 .offcanvas-subtotal{
-  border-bottom: 1px solid #e0ded7;
+  border-bottom: 1px solid rgb(204, 204, 204);
 }
 
-.cart-link{
+.cart-link, .checkout{
   text-decoration: none;
 }
 /******************************************
