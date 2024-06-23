@@ -22,7 +22,7 @@ const Cart = () => {
         <CartItems cartItems={cartItems} cartImg={'cart-product-img-small'}/>
 
       </section>
-      <section className='col-4'>
+      <section className='col-12 col-lg-4 mt-4 pt-3 ps-5'>
         <span className="order-summary mb-3">Order Summary</span>
 
         <div className='d-flex justify-content-between'>
@@ -33,14 +33,14 @@ const Cart = () => {
             <span>Shipping Cost</span>
             <span>Free</span>
         </div>
-        <div className='mt-3 pb-2 d-flex justify-content-between checkout-total'>
+        <div className='mt-3 pt-3 pb-2 d-flex justify-content-between checkout-total'>
             <h5>Total</h5>
             <span className='cart-total-price'>{formatUSD(cartTotalPrice)}</span>
         </div>
 
         <Link to='/cart' className='mt-3 checkout d-grid gap-3'>
           <Button variant="danger" size="lg">Checkout</Button>
-          <button type="button" class="btn btn-outline-secondary btn-lg"><img className="paypal-btn" src={paypal} alt="paypal" /></button>
+          <button type="button" className="btn btn-outline-secondary btn-lg"><img className="paypal-btn" src={paypal} alt="paypal" /></button>
         </Link>
       </section>
 

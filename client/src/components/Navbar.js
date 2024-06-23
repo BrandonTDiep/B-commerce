@@ -57,7 +57,7 @@ const Navbars = () => {
     return(
         <Navbar expand="md" className='nav'>
             <Navbar.Brand>       
-                <Link to="/" className="nav-link px-0 logo"><FontAwesomeIcon className="pl-1" icon={faShop} /> B-commerce</Link>
+                <Link to="/" className="nav-link px-0 logo"><FontAwesomeIcon className="pl-1" icon={faShop} style={{color: "#ce1c1c",}} /> B-commerce</Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
