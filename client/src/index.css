@@ -47,6 +47,14 @@ body {
   align-items: center;
 }
 
+.nav-link:hover {
+  color: red !important;
+}
+
+.nav-link:focus {
+  color: black !important;
+}
+
 a.nav-link{
   color: black ; 
 }
@@ -92,12 +100,17 @@ a.nav-link{
   text-decoration: line-through;
 }
 
+.cut-price.size-big {
+  font-size: 1.2rem;
+}
+
 .price {
   font-weight: 500;
 }
 
 .sale {
   font-weight: 500;
+  color: red;
 }
 
 .product {

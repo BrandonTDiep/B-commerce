@@ -4,6 +4,7 @@ import axios from 'axios'
 import loadingSpinner from "../assets/loadingSpinner.svg"
 import Button from 'react-bootstrap/Button';
 import { formatUSD } from '../utils/helpers';
+import { getPrice, hasDiscount } from '../utils/pricing'
 import { useCart } from '../context/CartContext'
 import QuantityUpdater from "../components/QuantityUpdater";
 
@@ -17,6 +18,8 @@ const Product = () => {
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
   const { cartItems, addToCart } = useCart() // get the addToCart function from context
+  const finalPrice = getPrice(product)
+  const discountApplied = hasDiscount(product)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -73,7 +76,7 @@ const Product = () => {
       return
     }
     else{
-      addToCart(product, quantity)
+      addToCart({...product, finalPrice}, quantity)
     }
   }
 
@@ -116,8 +119,14 @@ const Product = () => {
 
         <p className="mt-4">{product.description}</p>
 
-        <span className='main-price'>{formatUSD(quantity * product.price)}</span>
-
+        {discountApplied ? 
+          <div>
+            <span className='main-price sale'>Sale {formatUSD(quantity * finalPrice)}</span> 
+            <span className='cut-price size-big mb-0 ms-3'>${product.price}</span>
+          </div>
+        : 
+        <span className='main-price'>{formatUSD(quantity * finalPrice)}</span> 
+        }
         <QuantityUpdater productId={product.id} quantity={quantity} handleIncrease={handleIncrease} handleDecrease={handleDecrease} size = {'big'}/>
 
         <div className="d-grid gap-3 mb-5">
