@@ -34,7 +34,7 @@ const CartItems = ({ cartItems, cartImg }) => {
                             {discountApplied ? 
                             <div>
                                 <span className='cart-sale-price sale'>Sale {formatUSD(item.quantity * item.product.finalPrice)}</span> 
-                                <span className='cart-cut-price size-big mb-0 ms-3'>${item.product.price}</span>
+                                <span className='cart-cut-price size-big mb-0 ms-3'>{formatUSD(item.quantity * item.product.price)}</span>
                             </div>
                             : 
                             <span className='cart-product-price'>{formatUSD(item.quantity * item.product.finalPrice)}</span>

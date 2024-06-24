@@ -124,7 +124,7 @@ const Product = () => {
         {discountApplied ? 
           <div>
             <span className='main-price sale'>Sale {formatUSD(quantity * finalPrice)}</span> 
-            <span className='cut-price size-big mb-0 ms-3'>${product.price}</span>
+            <span className='cut-price size-big mb-0 ms-3'>{formatUSD(quantity * product.price)}</span>
           </div>
         : 
         <span className='main-price'>{formatUSD(quantity * finalPrice)}</span> 
