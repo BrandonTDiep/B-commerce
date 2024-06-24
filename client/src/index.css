@@ -211,6 +211,10 @@ a.nav-link{
   text-align: center;
 }
 
+.category-links{
+  color: black;
+}
+
 .categories-list{
   list-style-type: none;
   padding-left: 0px;

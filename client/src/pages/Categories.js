@@ -56,9 +56,9 @@ const Categories = () => {
         <h1 className="mx-auto category-title">{category.replace('-', ' ')}</h1>
         <nav className="categories-nav">
           <ul className="categories-list">
-          <li><Link to={`/categories/all`} className="mt-5">All</Link></li>
+          <Link to={`/categories/all`} className="mt-5 category-links"><li>All</li></Link>
           {categories.slice(0,7).map((category, index) => (
-              <li key={index}><Link key={index} to={`/categories/${category}`} className="mt-5">{category.replace('-', ' ')}</Link></li>
+              <Link key={index} to={`/categories/${category}`} className="mt-5 category-links"><li key={index}>{category.replace('-', ' ')}</li></Link>
             ))}
           </ul>
         </nav>
