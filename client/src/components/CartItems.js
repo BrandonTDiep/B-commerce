@@ -2,6 +2,7 @@ import { useCart } from '../context/CartContext'
 import { formatUSD } from '../utils/helpers';
 import QuantityUpdater from "./QuantityUpdater";
 import { hasDiscount } from '../utils/pricing'
+
 const CartItems = ({ cartItems, cartImg }) => {
     const { addToCart, removeFromCart, deleteFromCart } = useCart()
 

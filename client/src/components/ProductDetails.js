@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import { formatUSD } from '../utils/helpers';
+
 const ProductDetails = ({ product, sale }) => {
   return (
     <Card className='mb-5'>

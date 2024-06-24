@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import { formatUSD } from '../utils/helpers';
 import { getPrice, hasDiscount } from '../utils/pricing'
 import { useCart } from '../context/CartContext'
+
+// components
 import QuantityUpdater from "../components/QuantityUpdater";
 
 const Product = () => {
