@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Link, useParams } from 'react-router-dom'
 import ProductDetails from '../components/ProductDetails'
 import loadingSpinner from "../assets/loadingSpinner.svg"
+import { getPrice, hasDiscount } from '../utils/pricing'
 
 import axios from 'axios' 
 
@@ -65,15 +66,17 @@ const Categories = () => {
       <ul className="product-items">
         {categoryProducts
             .map((product) => {
-                let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
+              const finalPrice = getPrice(product)
+              const discountApplied = hasDiscount(product)
 
-                return(
+              return(
                   <li key={product.id}>
-                    <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
-                        <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/>
-                    </Link>
+                      <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
+                          <ProductDetails key={product.id} product = {{...product, finalPrice}} sale = {discountApplied}/>
+                      </Link>
                   </li>
-                )
+
+              )
             })}
       </ul>
       

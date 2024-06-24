@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom'
 import axios from 'axios' 
 import mainBanner from "../assets/banner.jpg"
 import furnitureBanner from "../assets/furniture.png"
 import groceries from "../assets/groceries.png"
 import loadingSpinner from "../assets/loadingSpinner.svg"
 // components
-import ProductDetails from '../components/ProductDetails'
+import ProductCard from '../components/ProductCard'
+
 
 const Home = () => {
     
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+    const beautyProducts = products.filter((product) => product.category==='beauty')
+    const furnitureProducts = products.filter((product) => product.category==='furniture')
+    const groceryProducts = products.filter((product) => product.category==='groceries')
+    
     
     // useEffect will fire a component when rendered, want to only fire once, dependency array empty means fire only once
     useEffect(() => {
@@ -39,62 +43,9 @@ const Home = () => {
     }
     return(
         <div>
-            <section>
-                <img className="d-flex banner" src={mainBanner} alt="ecommerce banner" />
-                <h3 className="mt-5 mb-4">Featured Items</h3>
-                <ul className="product-items">
-                    {products.filter((product) => product.category==='beauty')
-                    .map((product) => {
-                        let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
-
-                        return(
-                            <li key={product.id}>
-                                <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
-                                    <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/>
-                                </Link>
-                            </li>
-
-                        )
-                    })}
-                </ul>
-            </section>
-            
-            <section>
-                <img className="d-flex banner" src={furnitureBanner} alt="furniture banner" />
-                <h3 className="mt-5 mb-4">On Sale</h3>
-                <ul className="product-items">
-                    {products.filter((product) => product.category==='furniture')
-                    .map((product) => {
-                        let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
-
-                        return(
-                            <li key={product.id}>
-                                <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
-                                    <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {true}/>
-                                </Link>
-                            </li>                        )
-                    })}
-                </ul>
-            </section>
-
-            <section>
-                <img className="d-flex banner" src={groceries} alt="groceries banner" />
-                <h3 className="mt-5 mb-4">Groceries</h3>
-                <ul className="product-items">
-                    {products.filter((product) => product.category==='groceries')
-                    .map((product) => {
-                        let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
-                        
-                        return(
-                            <li key={product.id}>
-                                <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
-                                    <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/>
-                                </Link>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </section>
+            <ProductCard filteredProducts={beautyProducts} productHeading={'Featured Items'} productBanner={mainBanner}/>
+            <ProductCard filteredProducts={furnitureProducts} productHeading={'On Sale'} productBanner={furnitureBanner}/>
+            <ProductCard filteredProducts={groceryProducts} productHeading={'Groceries'} productBanner={groceries}/>
         </div>
     )
 }
