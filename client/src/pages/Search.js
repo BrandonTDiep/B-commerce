@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react"
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import ProductDetails from '../components/ProductDetails'
+
+// components
+import ProductList from '../components/ProductList'
+
+
 const Search = () => {
 
   const { searchQuery } = useParams()
@@ -31,19 +35,7 @@ const Search = () => {
   return (
     <div>
       <h1>Search Results:</h1>
-      <ul className="product-items">
-        {searchedProducts
-            .map((product) => {
-                let discountedPrice =  (product.price) - (product.price * (product.discountPercentage / 100))
-                return(
-                  <li key={product.id}>
-                    <Link key={product.id} to={`/categories/product/${product.id}`} className="mt-5">
-                        <ProductDetails key={product.id} product = {{...product, discountedPrice}} sale = {false}/>
-                    </Link>
-                  </li>
-                )
-            })}
-      </ul>
+      <ProductList filteredProducts={searchedProducts}/>
     </div>
   )
 }
