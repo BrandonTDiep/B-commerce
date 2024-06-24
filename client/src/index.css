@@ -423,6 +423,15 @@ input::-webkit-inner-spin-button {
   font-size: 1.25rem;
 }
 
+.cart-sale-price{
+  font-size: 1rem;
+}
+
+.cart-cut-price{
+  font-size: 1rem;
+  text-decoration: line-through;
+}
+
 .offcanvas-footer, .offcanvas-header{
   background-color: #F5F4F2;
 }

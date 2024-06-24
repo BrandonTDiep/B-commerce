@@ -30,7 +30,14 @@ const CartItems = ({ cartItems, cartImg }) => {
                             <span className='cart-product-title d-flex justify-content-between'>{item.product.title}
                                 <button type="button" className="btn-close cart" aria-label="Close" onClick={() => handleDelete(item.product)} ></button>
                             </span>
+                            {discountApplied ? 
+                            <div>
+                                <span className='cart-sale-price sale'>Sale {formatUSD(item.quantity * item.product.finalPrice)}</span> 
+                                <span className='cart-cut-price size-big mb-0 ms-3'>${item.product.price}</span>
+                            </div>
+                            : 
                             <span className='cart-product-price'>{formatUSD(item.quantity * item.product.finalPrice)}</span>
+                            }
                             <QuantityUpdater 
                                 productId={item.product.id}
                                 quantity={item.quantity} 
