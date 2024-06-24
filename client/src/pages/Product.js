@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import loadingSpinner from "../assets/loadingSpinner.svg"
-import Button from 'react-bootstrap/Button';
+import { Alert, Button} from 'react-bootstrap';
 import { formatUSD } from '../utils/helpers';
 import { getPrice, hasDiscount } from '../utils/pricing'
 import { useCart } from '../context/CartContext'
@@ -19,6 +19,8 @@ const Product = () => {
   const [selectedImg, setSelectedImg] = useState()
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
+  const [showSuccess, setShowSucess] = useState(false)
+  const [showError, setShowError] = useState(false)
   const { cartItems, addToCart } = useCart() // get the addToCart function from context
   const finalPrice = getPrice(product)
   const discountApplied = hasDiscount(product)
@@ -75,16 +77,31 @@ const Product = () => {
   const handleAddToCart = () => {
     const existingCartItem = cartItems.find((item) => item.product.id === product.id)
     if(existingCartItem && (existingCartItem.quantity + quantity > 6)){
-      return
+      setShowError(true)
+      setTimeout(() => setShowError(false), 1000)
     }
     else{
       addToCart({...product, finalPrice}, quantity)
+      setShowSucess(true)
+      setTimeout(() => setShowSucess(false), 1000)
     }
   }
 
 
   return (
     <div className="row mt-4">
+
+      {showSuccess && (
+        <Alert variant="success" onClose={() => setShowSucess(false)} dismissible>
+          ✔️ {product.title} added to cart!
+        </Alert>
+      )}
+      {showError && (
+        <Alert variant="danger" onClose={() => setShowError(false)} dismissible>
+        ❗ You've reach the limit for {product.title}!
+        </Alert>
+      )}
+      
       <aside className="product-mini-images-container">
         {product.images.map((image, index) => (
            (image === selectedImg) ? 
