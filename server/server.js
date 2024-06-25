@@ -33,7 +33,6 @@ app.use(express.static(path.join(__dirname, "..", "frontend", "build")));
 app.use(flash());
 
 // Setup Routes For Which The Server Is Listening
-// when we fire request to this route right here I want you to use these routes 
 app.use('/api/products', productRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/searches', searchRoutes)
@@ -57,11 +56,10 @@ connectDB().then(() => {
     app.listen(process.env.PORT, () => {
       console.log("Server is running, you better catch it!");
     });
-
   })
   .catch((error) => {
     console.log(error)
-  })
+})
 
 
 
