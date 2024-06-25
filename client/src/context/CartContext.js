@@ -1,6 +1,7 @@
 // react context is a way that we can provide kind of global state to many diff components in the app
 
-import { createContext, useState, useContext } from 'react'
+import { createContext, useState, useEffect, useContext } from 'react'
+import { json } from 'react-router-dom'
 
 // create a context object
 export const CartContext = createContext()
@@ -11,7 +12,14 @@ export const useCart = () => useContext(CartContext)
 // create a provider component
 export const CartProvider = ({ children }) => {
 
-    const [cartItems, setCartItems] = useState([]) 
+    const [cartItems, setCartItems] = useState(() => {
+        const savedCartItems = localStorage.getItem('cartItems')
+        return savedCartItems ? JSON.parse(savedCartItems) : []
+    }) 
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    }, [cartItems])
 
     const addToCart = (product, quantity) => {
         setCartItems(
