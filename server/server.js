@@ -5,6 +5,7 @@ const path = require("path");
 const productRoutes = require("./routes/products");
 const categoryRoutes = require("./routes/categories");
 const searchRoutes = require("./routes/searches");
+const authRoutes = require("./routes/auth");
 
 const mongoose = require('mongoose');
 const flash = require("express-flash");
@@ -36,6 +37,7 @@ app.use(flash());
 app.use('/api/products', productRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/searches', searchRoutes)
+app.use('/api/auth', authRoutes)
 
 
 // 404 handler
