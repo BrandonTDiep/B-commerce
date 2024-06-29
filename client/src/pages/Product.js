@@ -90,18 +90,6 @@ const Product = () => {
 
   return (
     <div className="row mt-4">
-
-      {showSuccess && (
-        <Alert variant="success" onClose={() => setShowSucess(false)} dismissible>
-          ✔️ {product.title} added to cart!
-        </Alert>
-      )}
-      {showError && (
-        <Alert variant="danger" onClose={() => setShowError(false)} dismissible>
-        ❗ You've reach the limit for {product.title}!
-        </Alert>
-      )}
-      
       <aside className="product-mini-images-container">
         {product.images.map((image, index) => (
            (image === selectedImg) ? 
@@ -149,6 +137,18 @@ const Product = () => {
         <QuantityUpdater productId={product.id} quantity={quantity} handleIncrease={handleIncrease} handleDecrease={handleDecrease} size = {'big'}/>
 
         <div className="d-grid gap-3 mb-5">
+
+          {showSuccess && (
+            <Alert variant="success" onClose={() => setShowSucess(false)} dismissible>
+              ✔️ {product.title} added to cart!
+            </Alert>
+          )}
+          {showError && (
+            <Alert variant="danger" onClose={() => setShowError(false)} dismissible>
+            ❗ You've reach the limit for {product.title}!
+            </Alert>
+          )}
+
           <Button variant="danger" size="lg" onClick={handleAddToCart}>Add To Cart</Button>
           <Button variant="outline-secondary" size="lg">Buy Now</Button>{' '}
         </div>

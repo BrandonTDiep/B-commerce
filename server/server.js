@@ -5,8 +5,7 @@ const path = require("path");
 const productRoutes = require("./routes/products");
 const categoryRoutes = require("./routes/categories");
 const searchRoutes = require("./routes/searches");
-
-const mongoose = require('mongoose');
+const userRoutes = require("./routes/user");
 const flash = require("express-flash");
 const connectDB = require("./config/database");
 
@@ -16,9 +15,6 @@ require("dotenv").config({ path: "./config/.env" });
 
 //middleware
 //Body Parsing
-
-// any reqs that comes in and it looks like it has body to it , we're sending to the server and if it does and then attach it to the reqest object so we can access it in req handler
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -37,6 +33,7 @@ app.use(flash());
 app.use('/api/products', productRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/searches', searchRoutes)
+app.use('/api/user', userRoutes)
 
 
 // 404 handler
