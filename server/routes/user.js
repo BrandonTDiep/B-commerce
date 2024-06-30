@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/products")
 const usersController = require("../controllers/userController");
 
 // login route

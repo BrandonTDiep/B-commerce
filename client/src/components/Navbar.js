@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
+import { useAuthContext } from '../hooks/useAuthContext'
+import { useLogout } from '../hooks/useLogout'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShop } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +16,7 @@ const options = [
     backdrop: true,
   },
 ];
+
 const Navbars = () => {
 
     const [searchBarWidth, setSearchBarWidth] = useState('500px')
@@ -21,6 +24,9 @@ const Navbars = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate()
     const { cartQuantity } = useCart()
+    const { logout } = useLogout()
+    const { user } = useAuthContext()
+    
 
     const handleClose = () => setShow(false);
     const toggleShow = () => setShow((s) => !s);
@@ -33,6 +39,10 @@ const Navbars = () => {
         event.preventDefault()
         navigate(`/search/${searchQuery}`)
         setSearchQuery("")
+    }
+
+    const handleClick = () => {
+        logout()
     }
 
     useEffect(() => {
@@ -66,7 +76,15 @@ const Navbars = () => {
                 </Form>
                 <Nav className="ml-auto">
                     <Link to="/categories/all" className="nav-link">Categories</Link>
-                    <Link to="/login" className="nav-link">Sign In</Link>
+                    {user && (
+                        <div>
+                            <span>{user.email}</span>
+                            <button onClick={handleClick}>Log out</button>
+                        </div>
+                    )}
+                    {!user && (
+                        <Link to="/login" className="nav-link">Sign In</Link>
+                    )}
                     <i className="nav-link bi bi-cart3" onClick={toggleShow} aria-label="Cart">
                         {cartQuantity > 0 && <span className='bag-quantity'>{cartQuantity}</span>}
                     </i>   
