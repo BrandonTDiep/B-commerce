@@ -11,6 +11,14 @@ const userSchema = new Schema({
         unique: true,
         lowercase: true
     },
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
+    },
     password: {
         type: String,
         required: true
@@ -22,12 +30,12 @@ const userSchema = new Schema({
 userSchema.statics.signup = async function(email, password) {
 
     //validation
-    if(!email || !password){
-        throw Error('All fields must be filled')
-    }
+    // if(!email || !password){
+    //     throw Error('All fields must be filled')
+    // }
 
     if(!validator.isEmail(email)) {
-        throw Error('Email is not valid')
+        throw Error('Enter a valid email')
     }
 
     if(!validator.isStrongPassword(password)){
