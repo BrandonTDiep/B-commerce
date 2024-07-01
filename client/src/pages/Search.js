@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
+import loadingSpinner from "../assets/loadingSpinner.svg"
 import axios from 'axios'
 
 // components
@@ -10,6 +11,8 @@ const Search = () => {
 
   const { searchQuery } = useParams()
   const [searchedProducts, setSearchedProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+
 
   useEffect(() => {
     const fetchSearchedProducts = async () => {
@@ -20,10 +23,22 @@ const Search = () => {
       catch(error){
           console.log(error)
       }
+      finally{
+        setLoading(false)
+      }
     }
     fetchSearchedProducts()
 
   }, [searchQuery])
+  
+
+  if(loading === true){
+    return(
+        <div className="loading-container">
+            <img src={loadingSpinner} alt="loading.." />
+        </div>
+    );
+  }
 
   if(searchedProducts.length === 0){
     return(

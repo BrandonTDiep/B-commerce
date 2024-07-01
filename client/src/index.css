@@ -8,6 +8,10 @@ body {
   background: #f1f1f1;
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .pages, .nav.navbar {
@@ -520,6 +524,23 @@ button.cart-button{
 .cart-link, .checkout{
   text-decoration: none;
 }
+
+
+/******************************************
+/* FOOTER 
+/*******************************************/
+footer{
+  background: black;
+  text-align: center;
+  padding: 22px 0;
+  margin-top: auto;
+  color: white;
+}
+
+footer p{
+  margin-bottom: 0;
+}
+
 /******************************************
 /* MEDIA QUERIES
 /*******************************************/
