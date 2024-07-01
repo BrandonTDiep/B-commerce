@@ -25,10 +25,10 @@ module.exports = {
     
     // signup user
     signupUser: async (req, res) => {
-        const {email, password} = req.body
+        const {email, firstName, lastName, password} = req.body
 
         try{
-            const user = await User.signup(email, password)
+            const user = await User.signup(email, firstName, lastName, password)
 
             // create a token
             const token = createToken(user._id)

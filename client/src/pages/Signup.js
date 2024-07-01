@@ -1,16 +1,17 @@
 import { useState } from "react"
 import { useSignup } from "../hooks/useSignup"
+import { validatePassword } from '../utils/passwordValidator';
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [passwordErrors, setPasswordErrors] = useState([]);
   const [errors, setErrors] = useState({
     firstName: false,
     lastName: false,
     email: false,
-    password: false,
   })
   
   const handleBlur = (e) => { 
@@ -26,7 +27,34 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      firstName: firstName.trim() === '',
+      lastName: lastName.trim() === '',
+      email: email.trim() === '',
+    }))
+
+    setPasswordErrors(validatePassword(password));
+
+    // Return if there are any errors
+    if (firstName.trim() === '' || lastName.trim() === '' || email.trim() === '' || passwordErrors.length > 0) {
+      return
+    }
+
+
     await signup(email, firstName, lastName, password)
+  }
+
+  const handlePasswordChange = (e) => {
+    const { value } = e.target;
+    setPassword(value);
+    setPasswordErrors(validatePassword(value));
+  };
+
+  const handlePasswordBlur = (e) => {
+    const { value } = e.target;
+    setPassword(value);
+    setPasswordErrors(validatePassword(value));
   }
 
   return (
@@ -68,21 +96,28 @@ const Signup = () => {
         value={email} 
       />
       {errors.email && <p className="error-message">Please enter your email.</p>}
-      
+      {error && <p className="error-message">{error}</p>}
+
       <label htmlFor="password" className="mb-1">Password:</label>
       <input 
         id="password"
-        className={`mb-3 ${errors.password && 'error-border'}`}
+        className={`mb-3 ${passwordErrors.length !== 0 && 'error-border'}`}
         autoComplete="new-password"
         type="password" 
-        onChange={(e) => setPassword(e.target.value)}
-        onBlur={handleBlur} 
+        onChange={handlePasswordChange}
+        onBlur={handlePasswordBlur} 
         value={password} 
       />
-      {errors.password && <p className="error-message">Please enter your password.</p>}
-
+      {passwordErrors.length > 0 && (
+        <ul className="error-message">
+          {passwordErrors.map((err, index) => (
+            <li key={index}>{err}</li>
+          ))}
+        </ul>
+      )}
+      
       <button disabled={isLoading}>Sign up</button>
-      {error && <div className="error">{error}</div>}
+
     </form>
   )
 }

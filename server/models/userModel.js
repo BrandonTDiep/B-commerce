@@ -27,19 +27,10 @@ const userSchema = new Schema({
 
 // static signup method
 
-userSchema.statics.signup = async function(email, password) {
-
-    //validation
-    // if(!email || !password){
-    //     throw Error('All fields must be filled')
-    // }
+userSchema.statics.signup = async function(email, firstName, lastName, password) {
 
     if(!validator.isEmail(email)) {
         throw Error('Enter a valid email')
-    }
-
-    if(!validator.isStrongPassword(password)){
-        throw Error('Password too weak')
     }
 
     const normalizedEmail = email.toLowerCase()
@@ -47,13 +38,13 @@ userSchema.statics.signup = async function(email, password) {
     const exists = await this.findOne({ email: normalizedEmail })
 
     if(exists){
-        throw Error('Email already in use')
+        throw Error('An account exists for this email address. Enter a different address.')
     }
 
     const salt = await bcrpyt.genSalt(10)
     const hash = await bcrpyt.hash(password, salt)
 
-    const user = await this.create({ email, password: hash })
+    const user = await this.create({ email, firstName, lastName, password: hash })
 
     return user
 }
@@ -62,20 +53,16 @@ userSchema.statics.signup = async function(email, password) {
 
 userSchema.statics.login = async function(email, password){
 
-    if(!email || !password){
-        throw Error('All fields must be filled')
-    }
-
     const user = await this.findOne({ email })
 
     if(!user){
-        throw Error('Incorrect email')
+        throw Error('Your email address or password is incorrect.')
     }
 
     const match = await bcrpyt.compare(password, user.password)
 
     if(!match){
-        throw Error('Incorrect password')
+        throw Error('Your email address or password is incorrect.')
     }
 
     return user
