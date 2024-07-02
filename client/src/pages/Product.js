@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
 import loadingSpinner from "../assets/loadingSpinner.svg"
 import { Alert, Button} from 'react-bootstrap';
 import { formatUSD } from '../utils/helpers';
@@ -24,6 +25,7 @@ const Product = () => {
   const { cartItems, addToCart } = useCart() // get the addToCart function from context
   const finalPrice = getPrice(product)
   const discountApplied = hasDiscount(product)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -84,6 +86,18 @@ const Product = () => {
       addToCart({...product, finalPrice}, quantity)
       setShowSucess(true)
       setTimeout(() => setShowSucess(false), 1000)
+    }
+  }
+
+  const handleBuyToCart = () => {    
+    const existingCartItem = cartItems.find((item) => item.product.id === product.id)
+    if(existingCartItem && (existingCartItem.quantity + 1 > 6)){
+      setShowError(true)
+      setTimeout(() => setShowError(false), 1000)
+    }
+    else{
+      addToCart({...product, finalPrice}, quantity)
+      navigate(`/cart`)
     }
   }
 
@@ -150,7 +164,7 @@ const Product = () => {
           )}
 
           <Button variant="danger" size="lg" onClick={handleAddToCart}>Add To Cart</Button>
-          <Button variant="outline-secondary" size="lg">Buy Now</Button>{' '}
+          <Button variant="outline-secondary" size="lg" onClick={handleBuyToCart}>Buy Now</Button>{' '}
         </div>
 
       </div>
