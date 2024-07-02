@@ -78,7 +78,7 @@ const Navbars = () => {
                     <Link to="/categories/all" className="nav-link">Categories</Link>
                     {user && (
                         <div>
-                            <span>{user.email}</span>
+                            <span>{user.firstName}</span>
                             <button onClick={handleClick}>Log out</button>
                         </div>
                     )}
