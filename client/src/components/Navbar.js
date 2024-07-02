@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from 'react-router-dom'
-import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown,  Form, FormControl } from 'react-bootstrap';
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
 
@@ -77,10 +77,12 @@ const Navbars = () => {
                 <Nav className="ml-auto">
                     <Link to="/categories/all" className="nav-link">Categories</Link>
                     {user && (
-                        <div>
-                            <span>{user.firstName}</span>
-                            <button onClick={handleClick}>Log out</button>
-                        </div>
+                        <NavDropdown title={`Hi, ${user.firstName}`} id="navbarScrollingDropdown">
+                            <NavDropdown.Item href="#action5" onClick={handleClick}>
+                                Log out
+                            </NavDropdown.Item>
+                        </NavDropdown>
+        
                     )}
                     {!user && (
                         <Link to="/login" className="nav-link">Sign In</Link>

@@ -99,6 +99,10 @@ a.nav-link{
   transform: translateX(20%);
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; 
+}
 
 /******************************************
 /* LOGIN/SIGNUP PAGE LAYOUT
