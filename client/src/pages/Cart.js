@@ -12,7 +12,7 @@ const Cart = () => {
 
 
   return (
-    <div className='row mt-4'>
+    <div className='row mt-4 mb-5'>
       <section className='col'>
         <h2>Your Cart</h2>
         <div className='cart-options mt-5 d-flex'>

@@ -48,7 +48,7 @@ const Search = () => {
     )
   }
   return (
-    <div>
+    <div className="mt-4">
       <h1>Search Results:</h1>
       <ProductList filteredProducts={searchedProducts}/>
     </div>
