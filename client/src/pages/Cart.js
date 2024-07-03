@@ -10,14 +10,18 @@ const Cart = () => {
 
   const { cartItems, cartQuantity, cartTotalPrice } = useCart()
 
+  const handleCartOptions = () => {
+    
+  }
+
 
   return (
     <div className='row mt-4 mb-5'>
       <section className='col'>
         <h2>Your Cart</h2>
         <div className='cart-options mt-5 d-flex'>
-          <h4 className='flex-fill cart-in p-3 mb-0'>In Cart ({cartQuantity})</h4>
-          <h4 className='flex-fill cart-save p-3 mb-0'>Saved For Later (0)</h4>
+          <button className='flex-fill cart-in p-3 mb-0'>In Cart ({cartQuantity})</button>
+          <button className='flex-fill cart-save p-3 mb-0'>Saved For Later (0)</button>
         </div>
         <CartItems cartItems={cartItems} cartImg={'cart-product-img-small'}/>
 

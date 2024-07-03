@@ -101,6 +101,18 @@ const Product = () => {
     }
   }
 
+  const handleSaveItem = async () => {
+    try {
+      const response = await axios.post('/api/products', product)
+      console.log('Product saved', response.data)
+
+    }
+    catch (error) {
+      console.log(error)
+
+    }
+  }
+
 
   return (
     <div className="row mt-4">
@@ -116,8 +128,8 @@ const Product = () => {
       </aside>
 
       <h2 className="mobile-product-name">{product.title}</h2>
-
-      <div className="col">
+      <div className="col image-container">
+        <i className="bi bi-suit-heart save-item" onClick={handleSaveItem}></i>
         <img className='product-main-img' src={displayedImg} alt='product'/>
       </div>
 

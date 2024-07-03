@@ -64,7 +64,8 @@ body {
 }
 
 a.nav-link{
-  color: black ; 
+  color: black; 
+  font-weight: 500;
 }
 
 .banner {
@@ -449,11 +450,21 @@ input::-webkit-inner-spin-button {
 }
 
 .cart-in, .cart-save{
-  border-bottom: 1px solid rgb(204, 204, 204);
+  font-size: 1.2rem;
+  font-weight: 500;
+  background-color: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 3px solid black;
 }
 
 .checkout-total{
   border-top: 1px solid rgb(204, 204, 204);
+}
+
+button.btn.btn-danger.btn-lg, .checkout button{
+  font-family: 'Poppins';
 }
 
 .order-summary{
@@ -474,6 +485,18 @@ input::-webkit-inner-spin-button {
   list-style-type: none;
   border-bottom: 1px solid rgb(204, 204, 204);
 }
+
+.image-container {
+  position: relative;
+  display: inline-block; 
+}
+
+.save-item {
+  position: absolute;
+  right: 25px; 
+  font-size: 1.6rem;
+}
+
 
 .cart-product-title, .cart-product-price{
   font-weight: 500;
