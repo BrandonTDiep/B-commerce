@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const productsController = require("../controllers/productController");
+const requireAuth = require('../middleware/requireAuth')
 
-
-//create instance of router 
 
 // GET all products
 router.get('/', productsController.getProducts)
@@ -12,6 +11,6 @@ router.get('/', productsController.getProducts)
 router.get('/:id', productsController.getProduct)
 
 // POST a saved product
-router.post('/', productsController.createSavedProduct)
+router.post('/', requireAuth, productsController.createSavedProduct)
 
 module.exports = router;

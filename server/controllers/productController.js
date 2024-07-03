@@ -19,9 +19,13 @@ module.exports = {
     // create new saved product
     createSavedProduct: async (req, res) => {
         const product = req.body
+
+        const user_id = req.user._id
+
+        console.log(user_id)
         
         try{
-            const savedProduct = await Product.create({ product: product });  
+            const savedProduct = await Product.create({ product: product, user_id: user_id });  
             res.status(200).json(savedProduct)
         } catch(error){
             res.status(400).json({error: error.message})

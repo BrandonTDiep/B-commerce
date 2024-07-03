@@ -497,6 +497,21 @@ button.btn.btn-danger.btn-lg, .checkout button{
   font-size: 1.6rem;
 }
 
+.hidden{
+  display: none;
+}
+.save-notif{
+  font-size: 0.8rem;
+  text-align: center;
+  position: absolute;
+  top: 2.5rem;
+  right: 25px; 
+  padding: .75rem;
+  background: black;
+  color: white;
+  border-radius: .3125rem;
+  width: 9.6875rem;
+}
 
 .cart-product-title, .cart-product-price{
   font-weight: 500;

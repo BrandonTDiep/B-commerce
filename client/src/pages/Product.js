@@ -1,8 +1,9 @@
+import axios from 'axios'
+import loadingSpinner from "../assets/loadingSpinner.svg"
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
-import loadingSpinner from "../assets/loadingSpinner.svg"
+import { useAuthContext } from "../hooks/useAuthContext"
+import { useNavigate } from 'react-router-dom'
 import { Alert, Button} from 'react-bootstrap';
 import { formatUSD } from '../utils/helpers';
 import { getPrice, hasDiscount } from '../utils/pricing'
@@ -22,9 +23,12 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1)
   const [showSuccess, setShowSucess] = useState(false)
   const [showError, setShowError] = useState(false)
+  const [showNotification, setshowNotification] = useState(false)
   const { cartItems, addToCart } = useCart() // get the addToCart function from context
   const finalPrice = getPrice(product)
   const discountApplied = hasDiscount(product)
+  const {user} = useAuthContext()
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -93,7 +97,7 @@ const Product = () => {
     const existingCartItem = cartItems.find((item) => item.product.id === product.id)
     if(existingCartItem && (existingCartItem.quantity + 1 > 6)){
       setShowError(true)
-      setTimeout(() => setShowError(false), 1000)
+      setTimeout(() => setShowError(false), 3000)
     }
     else{
       addToCart({...product, finalPrice}, quantity)
@@ -103,13 +107,23 @@ const Product = () => {
 
   const handleSaveItem = async () => {
     try {
-      const response = await axios.post('/api/products', product)
-      console.log('Product saved', response.data)
-
+      if(!user){
+        navigate(`/signup`)
+      }
+      else{
+        const response = await axios.post('/api/products/', product, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+        console.log('Product saved', response.data)
+        setshowNotification(true)
+        setTimeout(() => setshowNotification(false), 1000)
+      }
     }
     catch (error) {
       console.log(error)
-
     }
   }
 
@@ -131,6 +145,9 @@ const Product = () => {
       <div className="col image-container">
         <i className="bi bi-suit-heart save-item" onClick={handleSaveItem}></i>
         <img className='product-main-img' src={displayedImg} alt='product'/>
+        {showNotification && (
+            <span className='save-notif'>Added to Saved List</span>
+        )}
       </div>
 
       <aside className="mobile-view-mini-products mb-5">

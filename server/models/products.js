@@ -7,6 +7,10 @@ const productSchema = new Schema({
         type: Object,
         required: true,
     },
+    user_id: {
+        type: String,
+        required: true
+    },
 })
 
 module.exports = mongoose.model('Product', productSchema)
