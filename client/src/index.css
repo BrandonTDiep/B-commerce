@@ -488,6 +488,17 @@ button.btn.btn-danger.btn-lg, .checkout button{
   height: 70%;
 }
 
+.signin-message{
+  display: inline-block;
+}
+
+.signin-link{
+  color: black;
+}
+
+.signin-link:hover{
+  color: red;
+}
 
 /******************************************
 /* CART/OFFCANVAS COMPONENT

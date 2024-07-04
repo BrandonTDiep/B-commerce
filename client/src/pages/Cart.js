@@ -85,11 +85,16 @@ const Cart = () => {
           </button>
         </div>
         
-        {activeTab === 'inCart' ? 
-          <CartItems cartProducts={cartItems} cartImg={'cart-product-img-small'}/> 
-          : 
-          <CartItems cartProducts={savedProducts} cartImg={'cart-product-img-small'} cartOption='savedProducts'/> 
-        }
+        {activeTab === 'inCart' ? (
+          <CartItems cartProducts={cartItems} cartImg={'cart-product-img-small'} />
+        ) : (
+          user ? (
+            <CartItems cartProducts={savedProducts} cartImg={'cart-product-img-small'} cartOption='savedProducts' /> 
+          ) : (
+            <span className='mt-4 signin-message'><Link to="/login" className="signin-link">Sign in</Link> to your account to see saved for later items.</span>
+          )
+        )}
+
 
       </section>
       <section className='col-12 col-lg-4 mt-4 pt-3 ps-5'>
