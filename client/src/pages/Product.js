@@ -16,6 +16,7 @@ const Product = () => {
 
   const { productId } = useParams()
   const [product, setProduct] = useState([])
+  const [isSavedProduct, setSavedProduct] = useState('false')
   const [displayedImg, setDisplayedImg] = useState()
   const [previousImg, setPreviousImg] = useState()
   const [selectedImg, setSelectedImg] = useState()
@@ -38,6 +39,16 @@ const Product = () => {
           setProduct(response.data)
           setDisplayedImg(response.data.images[0])
           setPreviousImg(response.data.images[0]) 
+
+          if (user) {
+            const savedResponse = await axios.get(`/api/products/saved/${productId}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            setSavedProduct(savedResponse.data.saved);
+        }
       }
       catch(error){
           console.log(error)
@@ -48,7 +59,7 @@ const Product = () => {
     }
     fetchProduct()
 
-  }, [productId])
+  }, [productId, user])
 
   if(loading === true){
     return(
@@ -117,9 +128,10 @@ const Product = () => {
             'Authorization': `Bearer ${user.token}`
           }
         });
-        console.log('Product saved', response.data)
+        console.log(response.data.message)
         setshowNotification(true)
-        setTimeout(() => setshowNotification(false), 1000)
+        setSavedProduct(!isSavedProduct)
+        setTimeout(() => setshowNotification(false), 3000)
       }
     }
     catch (error) {
@@ -142,12 +154,13 @@ const Product = () => {
       </aside>
 
       <h2 className="mobile-product-name">{product.title}</h2>
+      
       <div className="col image-container">
-        <i className="bi bi-suit-heart save-item" onClick={handleSaveItem}></i>
+        <i className={`bi bi-suit-heart${isSavedProduct ? '-fill' : ''} save-item`} onClick={handleSaveItem}></i>
         <img className='product-main-img' src={displayedImg} alt='product'/>
-        {showNotification && (
-            <span className='save-notif'>Added to Saved List</span>
-        )}
+          {showNotification && (
+              <span className='save-notif'>{isSavedProduct ? 'Added to Saved List': 'Removed from Saved List'}</span>
+          )}
       </div>
 
       <aside className="mobile-view-mini-products mb-5">

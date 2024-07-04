@@ -497,6 +497,10 @@ button.btn.btn-danger.btn-lg, .checkout button{
   font-size: 1.6rem;
 }
 
+.bi-suit-heart-fill {
+  color: red;
+}
+
 .hidden{
   display: none;
 }

@@ -3,6 +3,8 @@ const router = express.Router();
 const productsController = require("../controllers/productController");
 const requireAuth = require('../middleware/requireAuth')
 
+// GET saved product
+router.get('/saved/:productId', requireAuth, productsController.getSavedProduct)
 
 // GET all products
 router.get('/', productsController.getProducts)
