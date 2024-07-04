@@ -18,7 +18,7 @@ const Cart = () => {
   const [activeTab, setActiveTab] = useState('inCart')
   const [loading, setLoading] = useState(true)
 
-  const [savedProducts, setSavedProducts] = useState()
+  const [savedProducts, setSavedProducts] = useState([])
   const {user} = useAuthContext()
 
 
@@ -51,7 +51,7 @@ const Cart = () => {
     }
     fetchSavedProducts()
 
-  }, [user])
+  }, [user, savedProducts])
 
   const handleTabClick = (tab) => {
     setActiveTab(tab)
@@ -84,9 +84,9 @@ const Cart = () => {
         </div>
         
         {activeTab === 'inCart' ? 
-          <CartItems cartItems={cartItems} cartImg={'cart-product-img-small'}/> 
+          <CartItems cartProducts={cartItems} cartImg={'cart-product-img-small'}/> 
           : 
-          <CartItems cartItems={savedProducts} cartImg={'cart-product-img-small'} cartOption='savedProducts'/> 
+          <CartItems cartProducts={savedProducts} cartImg={'cart-product-img-small'} cartOption='savedProducts'/> 
         }
 
       </section>

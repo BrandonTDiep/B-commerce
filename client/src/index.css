@@ -442,6 +442,9 @@ input::-webkit-inner-spin-button {
 /*******************************************/
 
 
+.cartitem-button{
+  width: 30%;
+}
 
 .cart-options{
   text-align: center;
