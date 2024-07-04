@@ -156,7 +156,7 @@ const Product = () => {
       <h2 className="mobile-product-name">{product.title}</h2>
       
       <div className="col image-container">
-        <i className={`bi bi-suit-heart${isSavedProduct ? '-fill' : ''} save-item`} onClick={handleSaveItem}></i>
+        <i className={`bi bi-suit-heart${isSavedProduct && user ? '-fill' : ''} save-item`} onClick={handleSaveItem}></i>
         <img className='product-main-img' src={displayedImg} alt='product'/>
           {showNotification && (
               <span className='save-notif'>{isSavedProduct ? 'Added to Saved List': 'Removed from Saved List'}</span>
