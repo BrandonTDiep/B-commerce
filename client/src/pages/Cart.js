@@ -1,16 +1,20 @@
 import axios from 'axios'
-import { useAuthContext } from "../hooks/useAuthContext"
-import loadingSpinner from "../assets/loadingSpinner.svg"
-
 import { useState, useEffect } from "react"
-import CartItems from "../components/CartItems";
-import { useCart } from '../context/CartContext'
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
-import { formatUSD } from '../utils/helpers';
+
+// hooks & context
+import { useAuthContext } from "../hooks/useAuthContext"
+import { useCart } from '../context/CartContext'
+
+// utils & assets
+import { formatUSD } from '../utils/helpers'
 import { getPrice } from '../utils/pricing'
 import paypal from "../assets/paypal.svg"
 
+// components
+import CartItems from "../components/CartItems"
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const Cart = () => {
 
@@ -59,9 +63,7 @@ const Cart = () => {
 
   if(loading === true){
     return(
-        <div className="loading-container">
-            <img src={loadingSpinner} alt="loading.." />
-        </div>
+      <LoadingSpinner />
     );
   }
 

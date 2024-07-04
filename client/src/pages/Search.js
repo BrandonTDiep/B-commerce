@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
-import loadingSpinner from "../assets/loadingSpinner.svg"
 import axios from 'axios'
 
 // components
 import ProductList from '../components/ProductList'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 
 const Search = () => {
@@ -34,9 +34,7 @@ const Search = () => {
 
   if(loading === true){
     return(
-        <div className="loading-container">
-            <img src={loadingSpinner} alt="loading.." />
-        </div>
+      <LoadingSpinner />
     );
   }
 

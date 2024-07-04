@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react"
 import axios from 'axios' 
+
+// components
+import ProductCard from '../components/ProductCard'
+import LoadingSpinner from '../components/LoadingSpinner'
+
+// utils & assets
 import mainBanner from "../assets/banner.jpg"
 import furnitureBanner from "../assets/furniture.png"
 import groceries from "../assets/groceries.png"
-import loadingSpinner from "../assets/loadingSpinner.svg"
-// components
-import ProductCard from '../components/ProductCard'
+
 
 
 const Home = () => {
@@ -36,9 +40,7 @@ const Home = () => {
 
     if(loading === true){
         return(
-            <div className="loading-container">
-                <img src={loadingSpinner} alt="loading.." />
-            </div>
+            <LoadingSpinner />
         );
     }
     return(

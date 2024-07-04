@@ -1,5 +1,9 @@
 import { useState } from "react"
+
+// hooks & context
 import { useSignup } from "../hooks/useSignup"
+
+// utils & assets
 import { validatePassword } from '../utils/passwordValidator';
 
 const Signup = () => {
