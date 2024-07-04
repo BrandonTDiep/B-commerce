@@ -6,6 +6,9 @@ const requireAuth = require('../middleware/requireAuth')
 // GET saved product
 router.get('/saved/:productId', requireAuth, productsController.getSavedProduct)
 
+// GET all saved product
+router.get('/savedProducts', requireAuth, productsController.getSavedProducts)
+
 // GET all products
 router.get('/', productsController.getProducts)
 

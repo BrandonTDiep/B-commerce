@@ -3,7 +3,7 @@ import { formatUSD } from '../utils/helpers';
 import QuantityUpdater from "./QuantityUpdater";
 import { hasDiscount } from '../utils/pricing'
 
-const CartItems = ({ cartItems, cartImg }) => {
+const CartItems = ({ cartItems, cartImg, cartOption }) => {
     const { addToCart, removeFromCart, deleteFromCart } = useCart()
 
     const handleIncrease = (product) => {
@@ -23,7 +23,6 @@ const CartItems = ({ cartItems, cartImg }) => {
         <ul className='cart-items'>
                 {cartItems.map((item) => {
                     const discountApplied = hasDiscount(item.product)
-                
                     return (
                         <li key={item.product.id} className='cart-product d-flex py-2'>
                             <img className={cartImg} src={item.product.images[0]} alt={item.product.title} />
@@ -33,19 +32,22 @@ const CartItems = ({ cartItems, cartImg }) => {
                             </span>
                             {discountApplied ? 
                             <div>
-                                <span className='cart-sale-price sale'>Sale {formatUSD(item.quantity * item.product.finalPrice)}</span> 
-                                <span className='cart-cut-price size-big mb-0 ms-3'>{formatUSD(item.quantity * item.product.price)}</span>
+                                <span className='cart-sale-price sale'>Sale {formatUSD((cartOption !== 'savedProducts' ? item.quantity : 1) * item.product.finalPrice)}</span> 
+                                <span className='cart-cut-price size-big mb-0 ms-3'>{formatUSD((cartOption !== 'savedProducts' ? item.quantity : 1) * item.product.price)}</span>
                             </div>
                             : 
-                            <span className='cart-product-price'>{formatUSD(item.quantity * item.product.finalPrice)}</span>
+                            <span className='cart-product-price'>{formatUSD((cartOption !== 'savedProducts' ? item.quantity : 1) * item.product.finalPrice)}</span>
                             }
+                            
+                            {cartOption !== 'savedProducts' ?
                             <QuantityUpdater 
                                 productId={item.product.id}
                                 quantity={item.quantity} 
                                 handleIncrease={() => handleIncrease(item.product)} 
                                 handleDecrease={() => handleDecrease(item.product)} 
                                 size={'small'}
-                            />
+                            /> :
+                            ''}
                             </div>       
                         </li>)
                 })}

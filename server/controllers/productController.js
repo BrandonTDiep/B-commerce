@@ -3,7 +3,7 @@ const Product = require("../models/products")
 const axios = require('axios')
 module.exports = {
 
-    // check if product is saved
+    // get saved product
     getSavedProduct: async (req, res) => {
         try {
             const productId = parseInt(req.params.productId, 10); 
@@ -12,6 +12,16 @@ module.exports = {
                 return res.status(200).json({ saved: true });
             }
             return res.status(200).json({ saved: false });
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+    },
+
+    // get saved products
+    getSavedProducts: async (req, res) => {
+        try {
+            const product = await Product.find({ user_id: req.user._id });
+            return res.status(200).json({ savedProducts: product });
         } catch (error) {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
@@ -51,7 +61,7 @@ module.exports = {
             }
         }
     },
-    
+
 }
 
 

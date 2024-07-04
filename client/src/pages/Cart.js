@@ -1,17 +1,68 @@
+import axios from 'axios'
+import { useAuthContext } from "../hooks/useAuthContext"
+import loadingSpinner from "../assets/loadingSpinner.svg"
+
+import { useState, useEffect } from "react"
 import CartItems from "../components/CartItems";
 import { useCart } from '../context/CartContext'
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { formatUSD } from '../utils/helpers';
+import { getPrice } from '../utils/pricing'
 import paypal from "../assets/paypal.svg"
 
 
 const Cart = () => {
 
   const { cartItems, cartQuantity, cartTotalPrice } = useCart()
+  const [activeTab, setActiveTab] = useState('inCart')
+  const [loading, setLoading] = useState(true)
 
-  const handleCartOptions = () => {
-    
+  const [savedProducts, setSavedProducts] = useState()
+  const {user} = useAuthContext()
+
+
+  useEffect(() => {
+    const fetchSavedProducts = async () => {
+      try{
+          if (user) {
+            const response = await axios.get(`/api/products/savedProducts`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            const productsWithFinalPrice = response.data.savedProducts.map(item => ({
+              ...item,
+              product: {
+                ...item.product,
+                finalPrice: getPrice(item.product)
+              }            
+            }));
+            setSavedProducts(productsWithFinalPrice);
+        }
+      }
+      catch(error){
+          console.log(error)
+      }
+      finally{
+        setLoading(false)
+      }
+    }
+    fetchSavedProducts()
+
+  }, [user])
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab)
+  }
+
+  if(loading === true){
+    return(
+        <div className="loading-container">
+            <img src={loadingSpinner} alt="loading.." />
+        </div>
+    );
   }
 
 
@@ -20,10 +71,23 @@ const Cart = () => {
       <section className='col'>
         <h2>Your Cart</h2>
         <div className='cart-options mt-5 d-flex'>
-          <button className='flex-fill cart-in p-3 mb-0'>In Cart ({cartQuantity})</button>
-          <button className='flex-fill cart-save p-3 mb-0'>Saved For Later (0)</button>
+          <button 
+            className={`flex-fill cart-in p-3 mb-0 ${activeTab === 'inCart' ? 'activeTab' : 'hoverTab'}`} 
+            onClick={() => handleTabClick('inCart')}>
+            In Cart ({cartQuantity})
+          </button>
+          <button 
+            className={`flex-fill cart-in p-3 mb-0 ${activeTab === 'savedForLater' ? 'activeTab' : 'hoverTab'}`} 
+            onClick={() => handleTabClick('savedForLater')}>
+            Saved For Later ({savedProducts.length})
+          </button>
         </div>
-        <CartItems cartItems={cartItems} cartImg={'cart-product-img-small'}/>
+        
+        {activeTab === 'inCart' ? 
+          <CartItems cartItems={cartItems} cartImg={'cart-product-img-small'}/> 
+          : 
+          <CartItems cartItems={savedProducts} cartImg={'cart-product-img-small'} cartOption='savedProducts'/> 
+        }
 
       </section>
       <section className='col-12 col-lg-4 mt-4 pt-3 ps-5'>
