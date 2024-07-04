@@ -18,7 +18,7 @@ const OffCanvas = ({ show, onClose, ...props }) => {
           {cartItems.length === 0 ? 
           <p>Your cart is empty!</p> 
           :
-          <CartItems cartItems={cartItems} cartImg={'cart-product-img'}/>
+          <CartItems cartProducts={cartItems} cartImg={'cart-product-img'}/>
           }       
         </Offcanvas.Body>
         <div className='offcanvas-footer'>
