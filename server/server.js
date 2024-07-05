@@ -13,6 +13,14 @@ const port = process.env.PORT || 4000;
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
+
+// Enable CORS for client origin only
+const cors = require('cors')
+const corsOptions = {
+   origin : ['https://b-commerce-client.onrender.com', 'https://localhost:3000'],
+}
+app.use(cors(corsOptions))
+
 //middleware
 //Body Parsing
 app.use(express.json());
