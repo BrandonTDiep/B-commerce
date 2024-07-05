@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 })
 
 // Render React as View
-app.use(express.static(path.join(__dirname, "..", "frontend", "build")));
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
 // Use flash messages for errors, info, ect...
 app.use(flash());
