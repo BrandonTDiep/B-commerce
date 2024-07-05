@@ -8,7 +8,7 @@ const searchRoutes = require("./routes/searches");
 const userRoutes = require("./routes/user");
 const flash = require("express-flash");
 const connectDB = require("./config/database");
-
+const port = process.env.PORT || 4000;
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -51,7 +51,7 @@ app.use((err, req, res, next) => {
 // connect to mongodb
 connectDB().then(() => {
     // Server Running
-    app.listen(process.env.PORT, () => {
+    app.listen(port, () => {
       console.log("Server is running, you better catch it!");
     });
 
