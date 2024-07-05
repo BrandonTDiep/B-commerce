@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useState, useEffect } from "react"
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
@@ -10,6 +9,8 @@ import { useCart } from '../context/CartContext'
 // utils & assets
 import { formatUSD } from '../utils/helpers'
 import { getPrice } from '../utils/pricing'
+import axiosInstance from '../utils/axiosInstance'
+
 import paypal from "../assets/paypal.svg"
 
 // components
@@ -30,7 +31,7 @@ const Cart = () => {
     const fetchSavedProducts = async () => {
       try{
           if (user) {
-            const response = await axios.get(`/api/products/savedProducts`, {
+            const response = await axiosInstance.get(`/api/products/savedProducts`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${user.token}`

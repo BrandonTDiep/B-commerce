@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 
 // components
 import ProductList from '../components/ProductList'
 import LoadingSpinner from '../components/LoadingSpinner'
 
+// utils & assets
+import axiosInstance from '../utils/axiosInstance'
 
 const Search = () => {
 
@@ -17,7 +18,7 @@ const Search = () => {
   useEffect(() => {
     const fetchSearchedProducts = async () => {
       try{
-          const response = await axios.get(`/api/searches/${searchQuery}`)
+          const response = await axiosInstance.get(`/api/searches/${searchQuery}`)
           setSearchedProducts(response.data)
       }
       catch(error){

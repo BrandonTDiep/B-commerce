@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import axios from 'axios' 
 
 // components
 import ProductCard from '../components/ProductCard'
@@ -9,6 +8,7 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import mainBanner from "../assets/banner.jpg"
 import furnitureBanner from "../assets/furniture.png"
 import groceries from "../assets/groceries.png"
+import axiosInstance from '../utils/axiosInstance'
 
 
 
@@ -25,7 +25,7 @@ const Home = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try{
-                const response = await axios.get('/api/products')
+                const response = await axiosInstance.get('/api/products')
                 setProducts(response.data)
             }
             catch(error){

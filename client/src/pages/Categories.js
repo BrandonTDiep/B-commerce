@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { Link, useParams } from 'react-router-dom'
-import axios from 'axios' 
 
 // components
 import ProductList from '../components/ProductList'
 import LoadingSpinner from '../components/LoadingSpinner'
 
+// utils & assets
+import axiosInstance  from '../utils/axiosInstance'
 
 const Categories = () => {
 
@@ -17,7 +18,7 @@ const Categories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
         try{
-            const response = await axios.get('/api/categories')
+            const response = await axiosInstance.get('/api/categories')
             setCategories(response.data)
         }
         catch(error){
@@ -29,7 +30,7 @@ const Categories = () => {
     }
     const fetchCategory = async () => {
       try{
-          const response = await axios.get(`/api/categories/${category}`)
+          const response = await axiosInstance.get(`/api/categories/${category}`)
           setCategoryProducts(response.data)
           
       }

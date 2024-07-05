@@ -1,12 +1,18 @@
-import axios from 'axios'
 import { useState } from "react"
 import { Alert} from 'react-bootstrap';
 
+//components
+import QuantityUpdater from "./QuantityUpdater";
+
+// hooks & context
+import { useAuthContext } from "../hooks/useAuthContext"
 import { useCart } from '../context/CartContext'
 import { formatUSD } from '../utils/helpers';
-import QuantityUpdater from "./QuantityUpdater";
+
+// utils & assets
 import { hasDiscount } from '../utils/pricing'
-import { useAuthContext } from "../hooks/useAuthContext"
+import axiosInstance from '../utils/axiosInstance'
+
 
 const CartItems = ({ cartProducts, cartImg, cartOption }) => {
     const { cartItems, addToCart, removeFromCart, deleteFromCart } = useCart()
@@ -30,7 +36,7 @@ const CartItems = ({ cartProducts, cartImg, cartOption }) => {
     const handleSaveItem = async (product) => {
         try {
      
-            const response = await axios.post('/api/products/', product, {
+            const response = await axiosInstance.post('/api/products/', product, {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`

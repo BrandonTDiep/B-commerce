@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +14,7 @@ import { useCart } from '../context/CartContext'
 // utils & assets
 import { formatUSD } from '../utils/helpers';
 import { getPrice, hasDiscount } from '../utils/pricing'
+import axiosInstance from '../utils/axiosInstance'
 
 
 
@@ -41,13 +41,13 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try{
-          const response = await axios.get(`/api/products/${productId}`)
+          const response = await axiosInstance.get(`/api/products/${productId}`)
           setProduct(response.data)
           setDisplayedImg(response.data.images[0])
           setPreviousImg(response.data.images[0]) 
 
           if (user) {
-            const savedResponse = await axios.get(`/api/products/saved/${productId}`, {
+            const savedResponse = await axiosInstance.get(`/api/products/saved/${productId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${user.token}`
@@ -126,7 +126,7 @@ const Product = () => {
         navigate(`/signup`)
       }
       else{
-        const response = await axios.post('/api/products/', product, {
+        const response = await axiosInstance.post('/api/products/', product, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${user.token}`
