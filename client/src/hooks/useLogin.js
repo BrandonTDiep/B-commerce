@@ -1,6 +1,11 @@
 import { useState } from 'react'
-import { useAuthContext } from './useAuthContext'
-import axios from 'axios' 
+
+// hooks & context
+import { useAuthContext } from "../hooks/useAuthContext"
+
+// utils & assets
+import axiosInstance from '../utils/axiosInstance'
+
 
 export const useLogin = () => {
   const [error, setError] = useState(null)
@@ -12,7 +17,7 @@ export const useLogin = () => {
     setError(null)
 
     try{
-      const response = await axios.post('/api/user/login', {
+      const response = await axiosInstance.post('/api/user/login', {
         email,
         password
       })

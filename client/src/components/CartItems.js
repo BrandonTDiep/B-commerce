@@ -14,7 +14,7 @@ import { hasDiscount } from '../utils/pricing'
 import axiosInstance from '../utils/axiosInstance'
 
 
-const CartItems = ({ cartProducts, cartImg, cartOption }) => {
+const CartItems = ({ cartProducts, cartImg, cartOption, setSavedProducts }) => {
     const { cartItems, addToCart, removeFromCart, deleteFromCart } = useCart()
     const {user} = useAuthContext()
     const [showSuccess, setShowSucess] = useState(false)
@@ -36,13 +36,15 @@ const CartItems = ({ cartProducts, cartImg, cartOption }) => {
     const handleSaveItem = async (product) => {
         try {
      
-            const response = await axiosInstance.post('/api/products/', product, {
+            await axiosInstance.post('/api/products/', product, {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
               }
             });
-            console.log(response.data.message)
+
+             // remove the product from the savedProducts list
+             setSavedProducts(prevSavedProducts => prevSavedProducts.filter(item => item.product.id !== product.id));
           
         }
         catch (error) {

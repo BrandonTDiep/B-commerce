@@ -56,7 +56,7 @@ const Cart = () => {
     }
     fetchSavedProducts()
 
-  }, [user, savedProducts])
+  }, [user])
 
   const handleTabClick = (tab) => {
     setActiveTab(tab)
@@ -90,7 +90,7 @@ const Cart = () => {
           <CartItems cartProducts={cartItems} cartImg={'cart-product-img-small'} />
         ) : (
           user ? (
-            <CartItems cartProducts={savedProducts} cartImg={'cart-product-img-small'} cartOption='savedProducts' /> 
+            <CartItems cartProducts={savedProducts} cartImg={'cart-product-img-small'} cartOption='savedProducts' setSavedProducts={setSavedProducts}/> 
           ) : (
             <span className='mt-4 signin-message'><Link to="/login" className="signin-link">Sign in</Link> to your account to see saved for later items.</span>
           )

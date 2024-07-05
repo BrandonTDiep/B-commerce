@@ -25,7 +25,6 @@ const Home = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try{
-                console.log(process.env.NODE_ENV)
                 const response = await axiosInstance.get('/api/products')
                 setProducts(response.data)
             }
