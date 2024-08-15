@@ -12,7 +12,8 @@ const Login = () => {
     email: false,
     password: false,
   })
-  
+
+  // Email and password element loses focus
   const handleBlur = (e) => { 
     const { id, value } = e.target
     setErrors((prevErrors) => ({
@@ -22,8 +23,9 @@ const Login = () => {
   }; 
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault() // Prevents the default form submission behavior
 
+    // Perform validation and custom login logic
     setErrors((prevErrors) => ({
       ...prevErrors,
       email: email.trim() === '',

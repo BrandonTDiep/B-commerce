@@ -36,10 +36,13 @@ export const CartProvider = ({ children }) => {
         )
     }
 
+    // quantity will be '1', evertyime we decrement from cart it will call this method
     const removeFromCart = (product, quantity) => {
+        console.log(quantity)
         setCartItems(
             prevItems => {
                 return prevItems.map(item => 
+                    
                     item.product.id === product.id ? {...item, quantity: item.quantity - quantity } : item
                 )
             }

@@ -12,6 +12,7 @@ module.exports = {
         const {email, password} = req.body
 
         try{
+            // calls the login method in my User Model
             const user = await User.login(email, password)
             const firstName = user.firstName
 
